@@ -5,11 +5,17 @@ To view  live How to run this app, **[click here](https://www.youtube.com/watch?
 
 ##Sections 📚
 
-✔️ Summary and About me\
-✔️ Skills\
-✔️ Github Profile\
-✔️ Projects\
-✔️ Contact me
+✔️ Onboarding Screens
+✔️ Login/SignUp
+✔️ Diagnostic Screen
+✔️ Activity Screen (RLW Sceen)
+✔️ Dyslexic Games
+✔️ Dashboard Screen 
+✔️ Deep Progress
+✔️ Chat Messenger (Psychologist Screen)
+✔️ Dyslexic News
+✔️ Profile Screen
+
 
 
 
