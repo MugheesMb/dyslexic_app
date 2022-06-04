@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:dyslexiaa/chatScreen/chat_scrren_.dart';
-import 'package:dyslexiaa/profile/avatar.dart';
 import 'package:dyslexiaa/provider/locator.dart';
 import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +58,7 @@ class _psychologist_ScreenState extends State<psychologist_Screen> {
     UserModel? user = locator.get<UserController>().currentUser;
     return Scaffold(
       appBar: AppBar(
-        title: Text('search'),
+        title: const Text('search'),
       ),
       // body: Column(
       //   children: [
@@ -86,22 +85,22 @@ class _psychologist_ScreenState extends State<psychologist_Screen> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('user').where('id',
             whereIn: [
-              "Sr8eLbGMKRWtDmOzeA7l7SlLKDd2",
-              "wiW70uYeVfYlpwhvs12MrRueJQ83"
+              
+              "KdE0pdl85AdUf4ppsy5B5ZlG3hh1"
             ]).snapshots(),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data.docs.length < 1) {
-              return Center(
-                child: Text("No user avaialable !"),
+              return const Center(
+                child: Text("No Psychologist avaialable currently in demo mode  :)"),
               );
             }
             return Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Center(
+                const Center(
                   child: Text(
                     "Psychologist !",
                     style: TextStyle(
@@ -112,7 +111,7 @@ class _psychologist_ScreenState extends State<psychologist_Screen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ListView.builder(
@@ -123,16 +122,32 @@ class _psychologist_ScreenState extends State<psychologist_Screen> {
                       return ListTile(
                         leading: FittedBox(
                           child: CircleAvatar(
-                            radius: 55.0,
-                            backgroundImage:
-                                NetworkImage(items['photoUrl'] ?? ''),
+                          //  radius: 55.0,
+                           // backgroundImage:
+                            
+//                 child:  CachedNetworkImage(
+//    imageUrl: items['photoURL'],
+//    placeholder: (context, url) => CircularProgressIndicator(),
+//    errorWidget: (context, url, error) =>   Image.asset('pic/u.png'),
+// ),
+                                        child: items['photoURL'] == null
+                                                    ? Image.asset('pic/u.png')
+                                                    
+                                                    : Image.network(
+                                                        items['photoURL'],
+                                                      )
+                                                      ),
+                                              
+                                    
+                            
+                              //  NetworkImage(items['photoURL'] ?? ''),
                             // : BoxFit.fill,
-                          ),
+                          
                         ),
                         //     ClipRRect(
                         //   borderRadius: BorderRadius.circular(120),
                         //   child: CachedNetworkImage(
-                        //     imageUrl: items['photoUrl']??'',
+                        //     imageUrl: items['photoURL']??'',
                         //     fit: BoxFit.cover,
                         //     //  width: MediaQuery.of(context).size.width,
                         //     placeholder: (context, url) =>
@@ -141,7 +156,7 @@ class _psychologist_ScreenState extends State<psychologist_Screen> {
                         //   ),
 
                         // ),
-                        title: Text(items['userName']),
+                        title: Text(items['displayName']),
                         subtitle: Text(items['email']),
                         trailing: IconButton(
                             onPressed: () {
@@ -149,19 +164,19 @@ class _psychologist_ScreenState extends State<psychologist_Screen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => chat_Screen(
-                                            currentUser: user!,
+                                            currentUser: user,
                                             friendId: items['id'],
-                                            friendImage: items['photoUrl'],
-                                            friendName: items['userName'],
+                                            friendImage: items['photoURL'],
+                                            friendName: items['displayName'],
                                           )));
                             },
-                            icon: Icon(Icons.message)),
+                            icon: const Icon(Icons.message)),
                       );
                     }),
               ],
             );
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },

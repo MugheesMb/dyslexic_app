@@ -131,17 +131,18 @@ class _QuizHomeState extends State<QuizMain> {
       home: Scaffold(
         backgroundColor: Color.fromRGBO(31, 40, 71, 1),
         body: Column(children: [
-          Image.asset("pic/bubbles.png"),
           Padding(
-              padding: EdgeInsets.symmetric(vertical: size.height / 450),
-              child: Text("Dyslexia Dygnosis",
+              padding: EdgeInsets.fromLTRB(
+                  0, size.height > 700 ? size.height / 10 : 5, 0, 0),
+              child: Text("Dyslexia Diagnosis",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 25,
+                      fontSize: size.height > 700 ? 25 : 18,
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
                       fontFamily: "Lexend"))),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: size.height / 50),
+            padding: EdgeInsets.fromLTRB(0, size.height / 20, 0, 0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -155,12 +156,12 @@ class _QuizHomeState extends State<QuizMain> {
                                 ? Text(
                                     "1",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white,
+                                        fontSize: size.height > 700 ? 20 : 15),
                                   )
-                                : Icon(
-                                    Icons.check,
+                                : Icon(Icons.check,
                                     color: Colors.white,
-                                  )),
+                                    size: size.height > 700 ? 20 : 15)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(35),
@@ -176,12 +177,12 @@ class _QuizHomeState extends State<QuizMain> {
                                 ? Text(
                                     "2",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white,
+                                        fontSize: size.height > 700 ? 20 : 15),
                                   )
-                                : Icon(
-                                    Icons.check,
+                                : Icon(Icons.check,
                                     color: Colors.white,
-                                  )),
+                                    size: size.height > 700 ? 20 : 15)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(35),
@@ -197,12 +198,12 @@ class _QuizHomeState extends State<QuizMain> {
                                 ? Text(
                                     "3",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white,
+                                        fontSize: size.height > 700 ? 20 : 15),
                                   )
-                                : Icon(
-                                    Icons.check,
+                                : Icon(Icons.check,
                                     color: Colors.white,
-                                  )),
+                                    size: size.height > 700 ? 20 : 15)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(35),
@@ -218,11 +219,13 @@ class _QuizHomeState extends State<QuizMain> {
                                 ? Text(
                                     "4",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white,
+                                        fontSize: size.height > 500 ? 20 : 15),
                                   )
                                 : Icon(
                                     Icons.check,
                                     color: Colors.white,
+                                    size: size.height > 500 ? 20 : 15,
                                   )),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(color: Colors.white),
@@ -239,11 +242,13 @@ class _QuizHomeState extends State<QuizMain> {
                                 ? Text(
                                     "5",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white,
+                                        fontSize: size.height > 500 ? 20 : 15),
                                   )
                                 : Icon(
                                     Icons.check,
                                     color: Colors.white,
+                                    size: size.height > 700 ? 20 : 15,
                                   )),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(color: Colors.white),
@@ -275,12 +280,13 @@ class _QuizHomeState extends State<QuizMain> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+                      padding: EdgeInsets.fromLTRB(size.width / 10,
+                          size.height / 50, size.width / 10, 0),
                       child: Text(
                           "Select the most suitable answer according to your child's bahvior  and over all performance",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: size.height > 700 ? 20 : 15,
                               color: Color.fromARGB(255, 255, 255, 255),
                               fontFamily: "Lexend")),
                     ),

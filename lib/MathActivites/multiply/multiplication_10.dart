@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, unnecessary_new, avoid_print
 
 import 'package:dyslexiaa/MathActivites/math_activity_screen.dart';
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:flutter/material.dart';
 import 'package:dyslexiaa/Widgets/option_box.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +10,10 @@ import 'dart:math';
 
 import '../../Widgets/activity_completed_popup.dart';
 import '../../progress.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 class Multiply10 extends StatefulWidget {
   static const routeName = "/multiplication-10";
   const Multiply10({Key? key}) : super(key: key);
@@ -169,6 +173,11 @@ class _Multiply10State extends State<Multiply10> {
                         'Hurray!! You\'ve completed the activity'));
                 setState(() {
                   Progress.setMultiplyValue(multiplyValue);
+                  Progress.TotalProgress();
+                     progRef.doc(user!.id).collection('ActivityDetail').doc('Multiplications').set({
+      "Completed": true,
+    });
+                  
                 });
               }
             },

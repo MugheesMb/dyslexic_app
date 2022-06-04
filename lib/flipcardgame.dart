@@ -1,9 +1,6 @@
-// ignore: import_of_legacy_library_into_null_safe
-// ignore_for_file: no_logic_in_create_state, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, import_of_legacy_library_into_null_safe, non_constant_identifier_names
-
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:dyslexiaa/flipcard_home.dart';
-import 'package:dyslexiaa/progress.dart';
-import 'package:dyslexiaa/progressg.dart';
+import 'package:dyslexiaa/progressG.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'GamesDisplay.dart';
@@ -14,13 +11,13 @@ import 'dart:async';
 class FlipCardGame extends StatefulWidget {
   static const routeName = "/flip-card-game";
   final Level _level;
-  FlipCardGame(this._level);
+  const FlipCardGame(this._level);
   @override
   _FlipCardGameState createState() => _FlipCardGameState(_level);
 }
 
 class _FlipCardGameState extends State<FlipCardGame> {
-  double flipCardGame = 0.08;
+  double flipCardGame = 0.33;
   _FlipCardGameState(this._level);
 
   int _previousIndex = -1;
@@ -28,7 +25,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
   bool _start = false;
 
   bool _wait = false;
-  late Level _level;
+  late final Level _level;
   late Timer _timer;
   int _time = 5;
   late int _left;
@@ -42,7 +39,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
     return Container(
       decoration: BoxDecoration(
           color: Colors.grey[100],
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black45,
               blurRadius: 3,
@@ -51,13 +48,13 @@ class _FlipCardGameState extends State<FlipCardGame> {
             )
           ],
           borderRadius: BorderRadius.circular(5)),
-      margin: EdgeInsets.all(4.0),
+      margin: const EdgeInsets.all(4.0),
       child: Image.asset(_data[index]),
     );
   }
 
   startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (t) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (mounted) {
         setState(() {
           _time = _time - 1;
@@ -102,7 +99,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
     showDialog(
         context: context,
         builder: (BuildContext context) => ActivityCompletePopup(
-            context, GamesDisplay(), 'You lost, try again :)'));
+            context, const GamesDisplay(), 'You lost, try again :)'));
     timerr.cancel();
   }
 
@@ -113,7 +110,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
       showDialog(
           context: context,
           builder: (BuildContext context) => ActivityCompletePopup(
-              context, GamesDisplay(), 'You lost, try again :)'));
+              context, const GamesDisplay(), 'You lost, try again :)'));
       timerr.cancel();
     }
   }
@@ -121,7 +118,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
   void startTimerrr() {
     time = 60;
     if (mounted) {
-      timerr = Timer.periodic(Duration(seconds: 1), (timerr) {
+      timerr = Timer.periodic(const Duration(seconds: 1), (timerr) {
         setState(() {
           if (time > 0) {
             time--;
@@ -140,12 +137,12 @@ class _FlipCardGameState extends State<FlipCardGame> {
     Size size = MediaQuery.of(context).size;
     return _isFinished
         ? Scaffold(
-            appBar: AppBar(title: Text("Card Game")),
+            appBar: AppBar(title: const Text("Card Game")),
             body: AlertDialog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(35),
               ),
-              title: Text(
+              title: const Text(
                 'Hurray!! You won',
                 textAlign: TextAlign.center,
                 style:
@@ -159,6 +156,9 @@ class _FlipCardGameState extends State<FlipCardGame> {
                     onPressed: () {
                       setState(() {
                         ProgressG.setFlipCardValue(flipCardGame);
+                          progRef.doc(user!.id).collection('ActivityDetail').doc('Flip The Cards').set({
+      "Completed": true,
+    });
                       });
                       Navigator.pushAndRemoveUntil(
                         context,
@@ -167,16 +167,16 @@ class _FlipCardGameState extends State<FlipCardGame> {
                       );
                       timerr.cancel();
                     },
-                    child: Text(
+                    child: const Text(
                       "Back To Main Screen",
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.blue),
                     ),
                     style: ElevatedButton.styleFrom(
-                        side: BorderSide(width: 3, color: Colors.blue),
+                        side: const BorderSide(width: 3, color: Colors.blue),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
-                        padding: EdgeInsets.fromLTRB(50, 20, 50, 20)),
+                        padding: const EdgeInsets.fromLTRB(50, 20, 50, 20)),
                   )
                 ],
               ),
@@ -216,9 +216,9 @@ class _FlipCardGameState extends State<FlipCardGame> {
         //   )
         : Scaffold(
             appBar: AppBar(
-              title: Text("Card Game"),
+              title: const Text("Card Game"),
               leading: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back,
                   color: Color.fromARGB(255, 253, 253, 253),
                 ),
@@ -235,14 +235,14 @@ class _FlipCardGameState extends State<FlipCardGame> {
                 },
               ),
               actions: <Widget>[
-                Icon(
+                const Icon(
                   Icons.timer_outlined,
                   color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 Center(
                   child: Text(
                     time.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold),
                   ),
@@ -258,12 +258,12 @@ class _FlipCardGameState extends State<FlipCardGame> {
                     }
                   },
                   child: Row(
-                    children: [
+                    children: const [
                       Icon(Icons.refresh,
                           color: Color.fromARGB(255, 255, 255, 255)),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Text("Reset Time",
                               style: TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),
@@ -285,14 +285,14 @@ class _FlipCardGameState extends State<FlipCardGame> {
                           ? Text(
                               'The cards will be hidden in $_time',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
                             )
                           : Text(
                               'Only $_left pairs left',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                               ),
                             ),
@@ -301,8 +301,8 @@ class _FlipCardGameState extends State<FlipCardGame> {
                       padding: const EdgeInsets.all(4.0),
                       child: GridView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                         ),
                         itemBuilder: (context, index) => _start
@@ -369,7 +369,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
                                   decoration: BoxDecoration(
                                       color: Colors.grey,
                                       borderRadius: BorderRadius.circular(5),
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           color: Colors.black45,
                                           blurRadius: 3,
@@ -377,7 +377,7 @@ class _FlipCardGameState extends State<FlipCardGame> {
                                           offset: Offset(2.0, 1),
                                         )
                                       ]),
-                                  margin: EdgeInsets.all(4.0),
+                                  margin: const EdgeInsets.all(4.0),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Image.asset(
@@ -390,8 +390,8 @@ class _FlipCardGameState extends State<FlipCardGame> {
                         itemCount: _data.length,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(38.0),
+                    const Padding(
+                      padding: EdgeInsets.all(38.0),
                       child: Text(
                         "Tap on different cards to find the same animal",
                         textAlign: TextAlign.center,

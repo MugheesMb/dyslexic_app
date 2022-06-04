@@ -1,12 +1,18 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
+import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:dyslexiaa/WritingActivites/writing_activity_screen.dart';
+import 'package:dyslexiaa/provider/locator.dart';
+import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../Widgets/activity_completed_popup.dart';
-import '../bottom_bar.dart';
 import '../progress.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 
 class DrawingClass extends StatefulWidget {
   static const routeName = "image-drawing";
@@ -50,6 +56,7 @@ class _DrawingClassState extends State<DrawingClass> {
   List<Offset> _points = <Offset>[];
   @override
   Widget build(BuildContext context) {
+    UserModel? user = locator.get<UserController>().currentUser;
     return Scaffold(
         appBar: AppBar(
             title:
@@ -104,7 +111,7 @@ class _DrawingClassState extends State<DrawingClass> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
+                        child: SizedBox(
                           height: 300,
                           width: 300,
                           child: SvgPicture.asset(
@@ -125,7 +132,7 @@ class _DrawingClassState extends State<DrawingClass> {
               SizedBox(
                 height: 30,
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width + 2,
                 child: SvgPicture.asset("pic/Stars.svg"),
               ),
@@ -149,6 +156,10 @@ class _DrawingClassState extends State<DrawingClass> {
                                       'Hurray!! You\'ve completed the activity'));
                           setState(() {
                             Progress.setDrawLetter(DrawLetter);
+                             Progress.TotalProgress();
+                             progRef.doc(user!.id).collection('ActivityDetail').doc('Write Letters').set({
+      "Completed": true,
+    });
                           });
                         }
                       });
@@ -175,14 +186,12 @@ class DrawingPointer extends CustomPainter {
   DrawingPointer({required this.points});
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = new Paint()
+    Paint paint = Paint()
       ..color = Colors.deepOrangeAccent
       ..strokeCap = StrokeCap.square
       ..strokeWidth = 10.0;
     for (int i = 0; i < points.length - 1; i++) {
-      if (points[i] != null && points[i + 1] != null) {
-        canvas.drawLine(points[i], points[i + 1], paint);
-      }
+      canvas.drawLine(points[i], points[i + 1], paint);
     }
   }
 

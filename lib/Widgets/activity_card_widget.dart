@@ -19,74 +19,150 @@ class ActivityCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-      child: Material(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
-        ),
-        child: Card(
-          elevation: 10,
+    if (size.height > 500) {
+      return Padding(
+        padding: EdgeInsets.fromLTRB(0, size.height / 100, 0, 0),
+        child: Material(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(35),
           ),
-          color: Color.fromRGBO(color[0], color[1], color[2], 1),
-          borderOnForeground: true,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => navLink));
-            },
-            child: Ink(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
-                        child: Text(
-                          title,
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+          child: Card(
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+            ),
+            color: Color.fromRGBO(color[0], color[1], color[2], 1),
+            borderOnForeground: true,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => navLink));
+              },
+              child: Ink(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Column(
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsets.fromLTRB(0, size.height / 60, 0, 0),
+                          child: Text(
+                            title,
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.format_list_bulleted,
-                              color: Colors.black,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                              child: Text(
-                                " " + (activityNum).toString(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                        Padding(
+                          padding:
+                              EdgeInsets.fromLTRB(0, size.height / 40, 0, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.format_list_bulleted,
+                                color: Colors.black,
                               ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(50, 5, 5, 5),
-                    height: size.height / 6,
-                    width: size.width / 2,
-                    child: Image.asset(
-                      imageUrl,
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                child: Text(
+                                  " " + (activityNum).toString(),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
+                    Container(
+                      padding: EdgeInsets.fromLTRB(50, 5, 5, 5),
+                      height: size.height / 6,
+                      width: size.width / 2,
+                      child: Image.asset(
+                        imageUrl,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Expanded(
+        //padding: EdgeInsets.fromLTRB(0, size.height / 100, 0, 0),
+        child: Material(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(35),
+          ),
+          child: Card(
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+            ),
+            color: Color.fromRGBO(color[0], color[1], color[2], 1),
+            borderOnForeground: true,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => navLink));
+              },
+              child: Ink(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Column(
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsets.fromLTRB(0, size.height / 60, 0, 0),
+                          child: Text(
+                            title,
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsets.fromLTRB(0, size.height / 40, 0, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.format_list_bulleted,
+                                color: Colors.black,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                child: Text(
+                                  " " + (activityNum).toString(),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(50, 5, 5, 5),
+                      height: size.height / 6,
+                      width: size.width / 2,
+                      child: Image.asset(
+                        imageUrl,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
   }
 }

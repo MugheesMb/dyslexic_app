@@ -1,11 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, no_logic_in_create_state, unused_import, non_constant_identifier_names
 
 import 'package:dyslexiaa/Fill%20Blanks/fill_blanks_A.dart';
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:dyslexiaa/ReadingActivity/reading_activity_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Widgets/activity_completed_popup.dart';
 import '../progress.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 
 class FillBlanksZ extends StatefulWidget {
   static const routeName = "/fill-blanks_Z";
@@ -314,6 +319,10 @@ class _FillBlanksZState extends State<FillBlanksZ> {
             onPressed: () {
               setState(() {
                 Progress.setFillInBlanks(FillInBlanks);
+                 Progress.TotalProgress();
+                            progRef.doc(user!.id).collection('ActivityDetail').doc('Fill In The Blanks').set({
+      "Completed": true,
+    });
               });
               showDialog(
                   context: context,

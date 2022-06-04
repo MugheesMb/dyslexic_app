@@ -86,7 +86,7 @@ class _Subtraction7to11_2State extends State<Subtraction7to11_2> {
                     Positioned(
                         top: size.height / 30,
                         left: size.width / 5,
-                        child: Text(no1.toString() + " x 2 =",
+                        child: Text(no1.toString() + " - 2 =",
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 18)))

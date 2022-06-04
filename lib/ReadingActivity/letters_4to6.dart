@@ -376,7 +376,7 @@ class _Letters4To6State extends State<Letters4To6> {
                         )
                       : Container(
                           padding: const EdgeInsets.all(20.0),
-                          child: (text == textLetter[i] && text != null)
+                          child: (text == textLetter[i])
                               ? TextHighlight(
                                   text: "\"" + text.toUpperCase() + "\"",
                                   words: _highLights,
@@ -414,6 +414,7 @@ class _Letters4To6State extends State<Letters4To6> {
                                 'Hurray!! You\'ve completed the activity'));
                     setState(() {
                       Progress.setwordsMatch(words_MatchValue);
+                       Progress.TotalProgress();
                     });
                   }
                   setState(() {

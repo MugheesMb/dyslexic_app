@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
 
-import '../../Widgets/activity_completed_popup.dart';
 
 class Addition4To6_7 extends StatefulWidget {
   static const routeName = "add-4to6-7";

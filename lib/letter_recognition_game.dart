@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:dyslexiaa/Widgets/option_box.dart';
 import 'package:dyslexiaa/progressG.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'GamesDisplay.dart';
 import 'Widgets/activity_completed_popup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 
 class LetterRecognitionGame extends StatefulWidget {
   static const routeName = "letter-game";
@@ -67,7 +72,7 @@ class _LetterRecognitionGameState extends State<LetterRecognitionGame> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) => startTimer());
+    WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
   }
 
   @override
@@ -192,6 +197,9 @@ class _LetterRecognitionGameState extends State<LetterRecognitionGame> {
                       _isQDropped = true;
                       setState(() {
                         ProgressG.setDysGameValue(dysGame);
+                            progRef.doc(user!.id).collection('ActivityDetail').doc('leterRecognition').set({
+      "Completed": 0.34,
+    });
                       });
                       showDialog(
                           context: context,
@@ -248,6 +256,9 @@ class _LetterRecognitionGameState extends State<LetterRecognitionGame> {
                         _isPDropped = true;
                         setState(() {
                           ProgressG.setDysGameValue(dysGame);
+                          progRef.doc(user!.id).collection('ActivityDetail').doc('leterRecognition').set({
+      "Completed": 0.34,
+    });
                         });
                         showDialog(
                             context: context,
@@ -452,6 +463,9 @@ class _LetterRecognitionGameState extends State<LetterRecognitionGame> {
                         _isDDropped = true;
                         setState(() {
                           ProgressG.setDysGameValue(dysGame);
+                          progRef.doc(user!.id).collection('ActivityDetail').doc('leterRecognition').set({
+      "Completed": 0.34,
+    });
                         });
                         showDialog(
                             context: context,
@@ -505,6 +519,9 @@ class _LetterRecognitionGameState extends State<LetterRecognitionGame> {
                         _isBDropped = true;
                         setState(() {
                           ProgressG.setDysGameValue(dysGame);
+                          progRef.doc(user!.id).collection('ActivityDetail').doc('Match The Letters').set({
+      "Completed": true,
+    });
                         });
                         showDialog(
                             context: context,

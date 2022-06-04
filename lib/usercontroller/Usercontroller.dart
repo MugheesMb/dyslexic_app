@@ -5,13 +5,12 @@ import 'package:dyslexiaa/provider/authprovider.dart';
 import 'package:dyslexiaa/provider/locator.dart';
 import 'package:dyslexiaa/provider/storageRepo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:image_picker/image_picker.dart';
 
 
 class UserController {
   UserModel? _currentUser;
   authProvider authh = locator.get<authProvider>();
-  StorageRepo _storage = locator.get<StorageRepo>();
+  final StorageRepo _storage = locator.get<StorageRepo>();
   User? user = FirebaseAuth.instance.currentUser;
 
   late Future init;
@@ -40,7 +39,7 @@ class UserController {
     _currentUser = await authh.signIn(email, password);
     _currentUser!.photoURL = await getDownload();
   }
-
+   
   UpdateFormData(String displayName) {
     _currentUser!.displayName = displayName;
     authh.UpdateFormData(displayName);

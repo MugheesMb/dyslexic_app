@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_field, avoid_print, non_constant_identifier_names
 
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:dyslexiaa/ReadingActivity/reading_activity_screen.dart';
 import 'package:dyslexiaa/progress.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 import '../Widgets/activity_completed_popup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 
 class Letters extends StatefulWidget {
   static const routeName = "/letters";
@@ -453,8 +458,14 @@ class _LettersState extends State<Letters> {
                                 context,
                                 ReadingActivityScreen(),
                                 'Hurray!! You\'ve completed the activity'));
+
                     setState(() {
                       Progress.setwordsMatch(words_MatchValue);
+                       Progress.TotalProgress();
+                          progRef.doc(user!.id).collection('ActivityDetail').doc('Letter Recognition').set({
+      "Completed": true,
+    });
+                       
                     });
                   }
                 },

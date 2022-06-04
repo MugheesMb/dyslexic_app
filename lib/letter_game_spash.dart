@@ -22,19 +22,19 @@ class LetterGameSplash extends StatelessWidget {
                     colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.8), BlendMode.darken)))),
         Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Container(
+          SizedBox(
               width: size.width,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
+                  children: const [
+                    SizedBox(
                       height: 250,
                       width: 250,
                       child: Card(
                         color: Color.fromRGBO(14, 102, 156, 1),
                         child: Center(
                             child: Padding(
-                          padding: const EdgeInsets.all(35.0),
+                          padding: EdgeInsets.all(35.0),
                           child: Text(
                             "Matching The Letter",
                             textAlign: TextAlign.center,

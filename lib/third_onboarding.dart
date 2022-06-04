@@ -1,12 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:dyslexiaa/LoginAndSignup/signup_login_screen.dart';
+import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
+import 'package:dyslexiaa/dashboard.dart';
+import 'package:dyslexiaa/provider/locator.dart';
+import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
 import 'package:flutter/material.dart';
 import 'Widgets/onboard.dart';
 
 class ThirdOnboardingScreen extends StatelessWidget {
   static const routeName = "/third-onboarding-screen";
-  const ThirdOnboardingScreen({Key? key}) : super(key: key);
+ 
+UserModel? user = locator.get<UserController>().currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,9 @@ class ThirdOnboardingScreen extends StatelessWidget {
           description:
               "If anyone ever puts you down for having dyslexiaa, don't believe them. Being dyslexic can actually be a big advantage, you'll grow more faster than before.",
           btText: "Let/'s go",
-          buttonNav: SignupLoginScreen.routeName,
+          
+          buttonNav: user != null ? DashboardScreen.routeName : SignupLoginScreen.routeName,
+          
         ));
   }
 }

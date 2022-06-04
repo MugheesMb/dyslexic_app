@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, unnecessary_new, avoid_print
 
 import 'package:dyslexiaa/MathActivites/math_activity_screen.dart';
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:flutter/material.dart';
 import 'package:dyslexiaa/Widgets/option_box.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,10 @@ import 'dart:math';
 
 import '../../Widgets/activity_completed_popup.dart';
 import '../../progress.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 
 class Divide10 extends StatefulWidget {
   static const routeName = "/division-10";
@@ -169,6 +174,10 @@ class _Divide10State extends State<Divide10> {
                         'Hurray!! You\'ve completed the activity'));
                 setState(() {
                   Progress.setdivision4_6(division4_6);
+                  Progress.TotalProgress();
+                    progRef.doc(user!.id).collection('ActivityDetail').doc('Division').set({
+      "Completed": true,
+    });
                 });
               }
             },

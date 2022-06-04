@@ -17,7 +17,7 @@ class UserModel {
       'id': id,
       'displayName': displayName,
       'email': email,
-      'photoUrl': photoURL,
+      'photoURL': photoURL,
       'createdAt': createdAt,
     };
   }

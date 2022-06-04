@@ -10,12 +10,13 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Card(
       shape: RoundedRectangleBorder(
-          side: BorderSide(color: Color.fromRGBO(31, 40, 71, 1), width: 2),
+          side: BorderSide(color: Color.fromRGBO(31, 40, 71, 1), width: 1),
           borderRadius: BorderRadius.circular(25)),
       child: Container(
-        width: double.infinity,
+        width: size.width,
         child: TextButton(
           //color: Colors.blue,
           // child: Padding(
@@ -24,7 +25,8 @@ class Answer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                padding: EdgeInsets.fromLTRB(0, size.height > 700 ? 10 : 0, 0,
+                    size.height > 700 ? 10 : 0),
                 child: Icon(
                   Icons.circle,
                   color: Color.fromRGBO(31, 40, 71, 1),
@@ -34,7 +36,8 @@ class Answer extends StatelessWidget {
                 answerText,
                 style: TextStyle(
                     color: Color.fromRGBO(31, 40, 71, 1),
-                    fontSize: 15,
+                    fontSize: size.height > 700 ? 15 : 10.5,
+                    fontWeight: FontWeight.bold,
                     fontFamily: "Lexend"),
               ),
             ],

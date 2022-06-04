@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ffi';
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OnBoardWidget extends StatelessWidget {
@@ -30,21 +27,24 @@ class OnBoardWidget extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
+      height: size.height,
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage(bgImage),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.1), BlendMode.darken))),
-      padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
+      padding: EdgeInsets.fromLTRB(0, size.height / 5, 0, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SvgPicture.asset(illustration,
-              height: size.height / 3.5, width: size.width),
-          //SizedBox(height: 20,),
           Container(
-            //padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
+            height: size.height > 600 ? size.height / 4 : size.height / 4,
+            width: size.width,
+            child: SvgPicture.asset(illustration,
+                height: size.height / 3.5, width: size.width),
+          ),
+          Container(
             child: Center(
               child: Container(
                 height: size.height / 10,
@@ -54,7 +54,7 @@ class OnBoardWidget extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 60.0,
+                    fontSize: size.height > 600 ? 60.0 : 40,
                     fontFamily: "Dongle",
                   ),
                 ),
@@ -62,19 +62,18 @@ class OnBoardWidget extends StatelessWidget {
             ),
           ),
           Container(
-            height: size.height / 8,
+            height: size.height > 600 ? size.height / 3 : size.height / 4,
             width: size.width,
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
               description,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20, color: Colors.white,
-                //fontFamily: "Roboto"
+                fontSize: size.height > 600 ? 20 : 15,
+                color: Colors.white,
               ),
             ),
           ),
-          SizedBox(height: 50),
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pushNamed(buttonNav);

@@ -28,7 +28,7 @@ class _GamesDisplayState extends State<GamesDisplay> {
                 fontFamily: "Lexend",
               )),
         ),
-        bottomNavigationBar: BottomNavBarV2(),
+        bottomNavigationBar: BottomNavBarV2(1),
         body: ListView(
           scrollDirection: Axis.horizontal,
           children: [

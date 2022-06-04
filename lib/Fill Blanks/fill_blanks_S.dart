@@ -4,7 +4,6 @@ import 'package:dyslexiaa/Fill%20Blanks/fill_blanks_T.dart';
 import 'package:dyslexiaa/ReadingActivity/reading_activity_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../Widgets/activity_completed_popup.dart';
 
 class FillBlanksS extends StatefulWidget {
   static const routeName = "/fill-blanks_S";

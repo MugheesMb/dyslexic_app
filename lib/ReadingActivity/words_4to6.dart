@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, sized_box_for_whitespace
 
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:dyslexiaa/ReadingActivity/reading_activity_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/activity_completed_popup.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../activity_screen.dart';
 import '../progress.dart';
 
 class Words4To6 extends StatefulWidget {
@@ -109,6 +109,7 @@ class _Words4To6State extends State<Words4To6> {
   int k = 0;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -133,7 +134,7 @@ class _Words4To6State extends State<Words4To6> {
       body: Stack(children: [
         Container(
           // height: 1000,
-          width: 420,
+          width: size.width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -141,7 +142,7 @@ class _Words4To6State extends State<Words4To6> {
                 image: AssetImage("pic/bubbles.png"),
                 //fit: BoxFit.cover,
               ),
-              SizedBox(height: 400),
+              SizedBox(height: size.height / 2),
               Image(
                 image: AssetImage("pic/bubbles.png"),
               ),
@@ -149,21 +150,34 @@ class _Words4To6State extends State<Words4To6> {
           ),
         ),
         Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  height: 150, width: 150, child: SvgPicture.asset(letter[i])),
-              SizedBox(width: 50),
-              Text("=",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
-              Container(height: 150, width: 150, child: Image.asset(image[j]))
-            ],
+          Container(
+            height: size.height / 4,
+            width: size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    height:
+                        size.height > 700 ? size.height / 4 : size.height / 2,
+                    width: size.width / 4,
+                    child: SvgPicture.asset(letter[i])),
+                SizedBox(width: 50),
+                Text("=",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: size.height > 700 ? 50 : 30,
+                        fontWeight: FontWeight.bold)),
+                Container(
+                    height:
+                        size.height > 700 ? size.height / 4 : size.height / 2,
+                    width: size.width / 4,
+                    child: Image.asset(image[j]))
+              ],
+            ),
           ),
           Container(
-            height: 80,
-            width: 350,
+            height: size.height / 7,
+            width: size.width - 50,
             child: Card(
                 color: Color.fromRGBO(153, 201, 169, 1),
                 child: Column(
@@ -193,6 +207,10 @@ class _Words4To6State extends State<Words4To6> {
                 } else {
                   setState(() {
                     Progress.setWordsValue(words_Value);
+                     Progress.TotalProgress();
+                           progRef.doc(user!.id).collection('ActivityDetail').doc('Words').set({
+      "Completed": true,
+    });
                   });
                   showDialog(
                       context: context,

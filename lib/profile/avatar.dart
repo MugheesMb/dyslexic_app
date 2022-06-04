@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
@@ -13,7 +12,7 @@ class Avatar extends StatelessWidget {
       onTap: onTap,
       child: Center(
         child: avatarUrl == null
-            ? CircleAvatar(
+            ? const CircleAvatar(
                 radius: 50.0,
                 child: Icon(Icons.photo_camera),
                

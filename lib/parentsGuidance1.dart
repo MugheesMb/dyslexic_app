@@ -10,6 +10,7 @@ class ParentsGuidance1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
           title: Text("How to treat children",
@@ -29,18 +30,21 @@ class ParentsGuidance1 extends StatelessWidget {
         child: Column(children: <Widget>[
           Container(
             height: 180,
+            width: size.width,
             child: Stack(
               children: <Widget>[
                 Positioned(
-                    top: -100, child: SvgPicture.asset("pic/circles.svg")),
+                    top: -100,
+                    width: size.width,
+                    child: SvgPicture.asset("pic/circles.svg")),
                 Positioned(
-                  top: 70,
-                  left: 100,
+                  top: size.height > 550 ? 70 : 40,
+                  width: size.width,
                   child: Center(
                     child: Text(
                       "Parents Guidance",
                       style: TextStyle(
-                        fontSize: 23,
+                        fontSize: size.height > 550 ? 23 : 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -56,7 +60,9 @@ class ParentsGuidance1 extends StatelessWidget {
               child: Text(
                 "A dyslexic child takes more time and parental attention than a child without any developmental prolems. Follow the following points to treat a child with dyslexia. These will help them grow confidence and increase their motivation to do better.",
                 textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    fontSize: size.height > 550 ? 20 : 16,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Divider(thickness: 3),

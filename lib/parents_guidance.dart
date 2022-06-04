@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:dyslexiaa/Widgets/row_card_view.dart';
 import 'package:dyslexiaa/dashboard.dart';
 import 'package:dyslexiaa/parentsGuidance1.dart';
 import 'package:dyslexiaa/parentsGuidance2.dart';
 import 'package:flutter/material.dart';
 
-import 'bottom_bar.dart';
 
 class ParentsGuidance extends StatelessWidget {
   static const routeName = "parent-guidance";
@@ -43,7 +41,7 @@ class ParentsGuidance extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35),
                 ),
-                child: Container(
+                child: SizedBox(
                   height: size.height / 5,
                   width: size.width - 5,
                   child: Card(
@@ -93,7 +91,7 @@ class ParentsGuidance extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35),
                 ),
-                child: Container(
+                child: SizedBox(
                   height: size.height / 5,
                   width: size.width - 5,
                   child: Card(

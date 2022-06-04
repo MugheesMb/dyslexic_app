@@ -20,6 +20,7 @@ class MathActivityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       appBar: AppBar(
@@ -40,7 +41,7 @@ class MathActivityScreen extends StatelessWidget {
             },
           )),
       bottomNavigationBar: BottomAppBar(
-        child: BottomNavBarV2(),
+        child: BottomNavBarV2(0),
         elevation: 0,
       ),
       body: GridView(
@@ -103,8 +104,8 @@ class MathActivityScreen extends StatelessWidget {
                             ),
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 180,
-                              width: 220,
+                              height: size.height / 5,
+                              width: size.width / 2.5,
                               child: Image.asset(
                                 "pic/Addition image.png",
                                 alignment: Alignment.center,
@@ -160,8 +161,8 @@ class MathActivityScreen extends StatelessWidget {
                             ),
                             Container(
                               padding: EdgeInsets.all(10),
-                              height: 180,
-                              width: 220,
+                              height: size.height / 5,
+                              width: size.width / 2.5,
                               child: Image.asset(
                                 "pic/Subtraction image.png",
                                 alignment: Alignment.center,

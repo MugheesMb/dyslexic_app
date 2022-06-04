@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, unnecessary_new, avoid_print, camel_case_types
 
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
 import 'package:flutter/material.dart';
 import 'package:dyslexiaa/Widgets/option_box.dart';
 import 'package:flutter/services.dart';
@@ -170,6 +171,10 @@ class _Subtraction7To11_10State extends State<Subtraction7To11_10> {
                         'Hurray!! You\'ve completed the activity'));
                 setState(() {
                   Progress.setAddition7_11Value(subtraction7_11);
+                  Progress.TotalProgress();
+                    progRef.doc(user!.id).collection('ActivityDetail').doc('Subtraction for 7 to 11').set({
+      "Completed": true,
+    });
                 });
               }
             },

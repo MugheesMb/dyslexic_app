@@ -11,7 +11,7 @@ class chat_Screen extends StatelessWidget {
   final String friendName;
   final String friendImage;
 
-  chat_Screen({
+  const chat_Screen({
     required this.currentUser,
     required this.friendId,
     required this.friendImage,
@@ -22,7 +22,7 @@ class chat_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.teal,
+          backgroundColor: const Color.fromARGB(255, 2, 112, 255),
           title: Row(
             children: [
               // ClipRRect(
@@ -34,20 +34,20 @@ class chat_Screen extends StatelessWidget {
                 avatarUrl: friendImage,
                 radius: 25,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
                 friendName,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               )
             ],
           )),
       body: Column(children: [
         Expanded(
             child: Container(
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25), topRight: Radius.circular(25))),
@@ -63,14 +63,14 @@ class chat_Screen extends StatelessWidget {
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data.docs.length < 1) {
-                  return Center(
+                  return const Center(
                     child: Text("say hi"),
                   );
                 }
                 return ListView.builder(
                     itemCount: snapshot.data.docs.length,
                     reverse: true,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       bool isMe = snapshot.data.docs[index]['senderId'] ==
                           currentUser!.id;
@@ -79,7 +79,7 @@ class chat_Screen extends StatelessWidget {
                           isMe: isMe);
                     });
               }
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             },
           ),
         )),

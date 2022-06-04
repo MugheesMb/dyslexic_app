@@ -10,7 +10,6 @@ import '../Tables/six_table.dart';
 import '../Tables/three_table.dart';
 import '../Tables/two_table.dart';
 import '../Tables/seven_table.dart';
-import '../bottom_bar.dart';
 import 'math_activity_screen.dart';
 
 class TableContent7To11 extends StatelessWidget {
@@ -38,10 +37,10 @@ class TableContent7To11 extends StatelessWidget {
               );
             },
           )),
-      bottomNavigationBar: BottomAppBar(
-        child: BottomNavBarV2(),
-        elevation: 0,
-      ),
+      // bottomNavigationBar: BottomAppBar(
+      //   child: BottomNavBarV2(),
+      //   elevation: 0,
+      // ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

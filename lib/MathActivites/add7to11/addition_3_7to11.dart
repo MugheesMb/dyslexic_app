@@ -105,15 +105,15 @@ class _Addition7To11_3State extends State<Addition7To11_3> {
                 height: 20,
               ),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                OptionBox(ans + 2, [182, 216, 243]),
+                OptionBox(ans + 2, const [182, 216, 243]),
                 SizedBox(height: size.height / 70, width: size.width / 6),
-                OptionBox(ans + 4, [182, 216, 243]),
+                OptionBox(ans + 4, const [182, 216, 243]),
               ]),
               SizedBox(height: size.height / 30),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                OptionBox(ans + 3, [182, 216, 243]),
-                OptionBox(ans + 5, [182, 216, 243]),
-                OptionBox(ans + 1, [182, 216, 243])
+                OptionBox(ans + 3, const [182, 216, 243]),
+                OptionBox(ans + 5, const [182, 216, 243]),
+                OptionBox(ans + 1, const [182, 216, 243])
               ])
             ],
           ),

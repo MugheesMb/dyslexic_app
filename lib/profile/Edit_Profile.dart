@@ -6,11 +6,8 @@ import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:dyslexiaa/profile/avatar.dart';
 import 'package:dyslexiaa/provider/locator.dart';
 import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-
 
 class Edit_Profile extends StatefulWidget {
   UserModel? user;
@@ -23,21 +20,22 @@ class Edit_Profile extends StatefulWidget {
 class Edit_ProfileState extends State<Edit_Profile> {
   final ImagePicker _picker = ImagePicker();
   File? photo;
-  var _displayName = TextEditingController();
-  var _oldpassword = TextEditingController();
-  var _newpassword = TextEditingController();
-  var _confirmpassword = TextEditingController();
+  final _displayNam = TextEditingController();
+  final _oldpassword = TextEditingController();
+  final _newpassword = TextEditingController();
+  final _confirmpassword = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool checkvalidpassword = true;
   @override
   void initState() {
-    _displayName.text = widget.user!.displayName;
+    _displayNam.text = widget.user!.displayName;
+   
     super.initState();
   }
 
   @override
   void dispose() {
-    _displayName.dispose();
+    _displayNam.dispose();
     _oldpassword.dispose();
     _newpassword.dispose();
     _confirmpassword.dispose();
@@ -52,15 +50,11 @@ class Edit_ProfileState extends State<Edit_Profile> {
       setState(() {
         _isLoading = true;
       });
-      if (_formKey.currentState!.validate() && checkvalidpassword) {
-        locator.get<UserController>().updateUserPassword(
-          _newpassword.text
-        );
-        Navigator.pop(context);
-      }
-      if (widget.user!.displayName != _displayName.text) {
-        var displayName = _displayName.text;
+       if (widget.user!.displayName != _displayNam.text) {
+        var displayName = _displayNam.text;
         await locator.get<UserController>().UpdateFormData(displayName);
+        Navigator.of(context).pop();
+         Navigator.of(context).pop();
       }
       checkvalidpassword = await locator
           .get<UserController>()
@@ -68,23 +62,28 @@ class Edit_ProfileState extends State<Edit_Profile> {
       setState(() {
         _isLoading = false;
       });
-      Navigator.of(context).pop();
-      Navigator.of(context).pop();
+       if (_formKey.currentState!.validate() && checkvalidpassword) {
+        locator.get<UserController>().updateUserPassword(_newpassword.text);
+        Navigator.pop(context);
+      }
+     
+      
+      
     }
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0xff555555),
+        backgroundColor: const Color(0xff555555),
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             //   crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Avatar(
@@ -101,16 +100,16 @@ class Edit_ProfileState extends State<Edit_Profile> {
                   });
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person),
                 ),
-                controller: _displayName,
+                controller: _displayNam,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Flexible(
@@ -118,8 +117,8 @@ class Edit_ProfileState extends State<Edit_Profile> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      Center(
-                        child: const Text(
+                      const Center(
+                        child: Text(
                           "Manage Password",
                           style: TextStyle(
                             fontSize: 39,
@@ -127,12 +126,12 @@ class Edit_ProfileState extends State<Edit_Profile> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.password),
+                          prefixIcon: const Icon(Icons.password),
                           hintText: "password",
                           errorText: checkvalidpassword
                               ? null
@@ -141,7 +140,7 @@ class Edit_ProfileState extends State<Edit_Profile> {
                         controller: _oldpassword,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.password_outlined),
                           hintText: "New Password",
                         ),
@@ -149,7 +148,7 @@ class Edit_ProfileState extends State<Edit_Profile> {
                         obscureText: true,
                       ),
                       TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.password_sharp),
                             hintText: " Confirm New Password",
                           ),
@@ -164,13 +163,13 @@ class Edit_ProfileState extends State<Edit_Profile> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 55,
                 width: double.maxFinite,
                 child: RaisedButton(
                   onPressed: _submitedit,
                   color: Colors.black54,
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Update",
                       style: TextStyle(

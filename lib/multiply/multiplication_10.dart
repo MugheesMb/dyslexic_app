@@ -169,6 +169,7 @@ class _Multiply10State extends State<Multiply10> {
                         'Hurray!! You\'ve completed the activity'));
                 setState(() {
                   Progress.setMultiplyValue(multiplyValue);
+                   Progress.TotalProgress();
                 });
               }
             },

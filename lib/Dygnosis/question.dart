@@ -10,9 +10,10 @@ class Question extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    Size size = MediaQuery.of(context).size;
+    return SizedBox(
       width: double.infinity,
-      margin: EdgeInsets.fromLTRB(10, 00, 10, 20),
+      // margin: EdgeInsets.fromLTRB(10, 00, 10, 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,15 +21,15 @@ class Question extends StatelessWidget {
               style: TextStyle(
                 color: Color.fromRGBO(31, 40, 71, 1),
                 fontFamily: "Lexend",
-                fontSize: 22,
+                fontSize: size.height > 700 ? 22 : 15,
                 //fontWeight: FontWeight.bold
               )),
-          SizedBox(height: 20),
+          SizedBox(height: size.height > 700 ? 20 : 5),
           Center(
             child: Text(
               questionText,
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: size.height > 700 ? 20 : 13,
                   fontWeight: FontWeight.bold,
                   color: Color.fromRGBO(31, 40, 71, 1),
                   fontFamily: "Lexend"),

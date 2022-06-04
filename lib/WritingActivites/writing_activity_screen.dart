@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../Widgets/row_card_view.dart';
 import '../activity_screen.dart';
-import '../bottom_bar.dart';
 import 'draw_letter.dart';
 
 class WritingActivityScreen extends StatelessWidget {

@@ -6,7 +6,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatelessWidget {
-  static const routeName = "/";
+  static const routeName = "spash";
   const SplashScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class SplashScreen extends StatelessWidget {
                         style:
                             TextStyle(color: Color.fromRGBO(108, 202, 244, 1))),
                     TextSpan(
-                      text: "lexia",
+                      text: "lexic",
                     )
                   ]),
             ),

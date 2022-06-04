@@ -1,14 +1,16 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, avoid_print, prefer_const_literals_to_create_immutables, duplicate_ignore, non_constant_identifier_names
-
 import 'dart:async';
 
 import 'package:dyslexiaa/GamesDisplay.dart';
-import 'package:dyslexiaa/progress.dart';
-import 'package:dyslexiaa/progressg.dart';
+import 'package:dyslexiaa/Progresdetail/progress_detail_card.dart';
+import 'package:dyslexiaa/progressG.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'Widgets/activity_completed_popup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 
 class DragGame extends StatefulWidget {
   static const routeName = "/drag-game";
@@ -19,7 +21,7 @@ class DragGame extends StatefulWidget {
 }
 
 class _DragGameState extends State<DragGame> {
-  double dragGame = 0.08;
+  double dragGame = 0.33;
   final Map<String, bool> score = {};
 
   /// Choices for game
@@ -41,14 +43,14 @@ class _DragGameState extends State<DragGame> {
       showDialog(
           context: context,
           builder: (BuildContext context) => ActivityCompletePopup(
-              context, GamesDisplay(), 'You lost, try again :)'));
+              context, const GamesDisplay(), 'You lost, try again :)'));
     }
   }
 
   void startTimer() {
     counter = 60;
     if (mounted) {
-      timerr = Timer.periodic(Duration(seconds: 1), (timerr) {
+      timerr = Timer.periodic(const Duration(seconds: 1), (timerr) {
         setState(() {
           if (counter > 0) {
             counter--;
@@ -64,7 +66,7 @@ class _DragGameState extends State<DragGame> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) => startTimer());
+    WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
   }
 
   @override
@@ -73,14 +75,14 @@ class _DragGameState extends State<DragGame> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => GamesDisplay()),
+              MaterialPageRoute(builder: (context) => const GamesDisplay()),
               (Route<dynamic> route) => false,
             );
             setState(() {
@@ -89,12 +91,12 @@ class _DragGameState extends State<DragGame> {
           },
         ),
         title: Text('Score ${score.length} / 6',
-            style: TextStyle(color: Colors.black)),
-        backgroundColor: Color.fromARGB(255, 63, 255, 143),
+            style: const TextStyle(color: Colors.black)),
+        backgroundColor: const Color.fromARGB(255, 63, 255, 143),
         elevation: 0,
         // ignore: prefer_const_literals_to_create_immutables
         actions: [
-          Icon(
+          const Icon(
             Icons.timer_outlined,
             color: Colors.black,
           ),
@@ -102,7 +104,7 @@ class _DragGameState extends State<DragGame> {
             child: Text(
               counter.toString(),
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(width: size.width / 10),
@@ -117,7 +119,7 @@ class _DragGameState extends State<DragGame> {
               }
             },
             child: Row(
-              children: [
+              children: const [
                 Icon(Icons.refresh, color: Colors.black),
                 Center(
                   child: Text("Start Again",
@@ -144,7 +146,7 @@ class _DragGameState extends State<DragGame> {
         Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("pic/gamebg.png"),
+                    image: const AssetImage("pic/gamebg.png"),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.8), BlendMode.darken)))),
@@ -159,7 +161,7 @@ class _DragGameState extends State<DragGame> {
                     data: emoji,
                     child: Emoji(emoji: score[emoji] == true ? '✅' : emoji),
                     feedback: Emoji(emoji: emoji),
-                    childWhenDragging: Emoji(emoji: '🌱'),
+                    childWhenDragging: const Emoji(emoji: '🌱'),
                   );
                 }).toList()),
             Column(
@@ -181,7 +183,7 @@ class _DragGameState extends State<DragGame> {
         if (score[emoji] == true) {
           return Container(
             color: Colors.grey,
-            child: Text(
+            child: const Text(
               'Correct!',
               style: TextStyle(color: Colors.white),
             ),
@@ -194,7 +196,7 @@ class _DragGameState extends State<DragGame> {
             color: choices[emoji],
             height: 80,
             width: 200,
-            child: Center(
+            child: const Center(
                 child: Text(
               "Match the fruit of the same color",
               textAlign: TextAlign.center,
@@ -211,11 +213,15 @@ class _DragGameState extends State<DragGame> {
               timerr.cancel();
               setState(() {
                 ProgressG.setDragGameValue(dragGame);
+                  progRef.doc(user!.id).collection('ActivityDetail').doc('Match The Colors').set({
+      "Completed": true,
+    });
+
               });
               showDialog(
                   context: context,
                   builder: (BuildContext context) => ActivityCompletePopup(
-                      context, GamesDisplay(), 'Hurray!! You won'));
+                      context, const GamesDisplay(), 'Hurray!! You won'));
             } else {
               seed++;
               print(seed);
@@ -230,7 +236,7 @@ class _DragGameState extends State<DragGame> {
 }
 
 class Emoji extends StatelessWidget {
-  Emoji({Key? key, required this.emoji}) : super(key: key);
+  const Emoji({Key? key, required this.emoji}) : super(key: key);
 
   final String emoji;
 
@@ -241,14 +247,12 @@ class Emoji extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         height: 70,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Text(
           emoji,
-          style: TextStyle(color: Colors.black, fontSize: 40),
+          style: const TextStyle(color: Colors.black, fontSize: 40),
         ),
       ),
     );
   }
 }
-
-//AudioCache plyr = AudioCache();

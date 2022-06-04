@@ -2,8 +2,11 @@
 // ignore_for_file: unused_import, prefer_const_constructors, use_key_in_widget_constructors
 import 'package:dyslexiaa/DragGameOnScreen.dart';
 import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
+import 'package:dyslexiaa/Progresdetail/activity_progress_detail.dart';
+import 'package:dyslexiaa/Progresdetail/game_progress_detail.dart';
 import 'package:dyslexiaa/provider/authprovider.dart';
 import 'package:dyslexiaa/provider/locator.dart';
+import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -41,6 +44,7 @@ import 'package:dyslexiaa/drag_game.dart';
 import 'package:dyslexiaa/WritingActivites/draw_letter.dart';
 import 'package:dyslexiaa/WritingActivites/drawing_board.dart';
 import 'package:dyslexiaa/LoginAndSignup/login.dart';
+import 'package:dyslexiaa/news/views/home.dart';
 import 'package:dyslexiaa/drag_game_splash.dart';
 import 'package:dyslexiaa/flip_card_level.dart';
 import 'package:dyslexiaa/flipcard_home.dart';
@@ -89,66 +93,70 @@ import 'LoginAndSignup/signup_login_screen.dart';
 import './bottom_bar.dart';
 import 'MathActivites/multiply/multiplication_1.dart';
 import 'voice.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
   setupServices();
-  runApp(const MyApp());
+  // runApp(
+  //   DevicePreview(
+  //     enabled: true,
+  //     builder: (context) =>   MyApp()
+  //   )
+  //  );
+  runApp(
+      MyApp()
+    
+   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp();
-// Future userSignedIn() async {
-  //   User user = FirebaseAuth.instance.currentUser;
-  //   if (user != null) {
-  //     // DocumentSnapshot userData = await FirebaseFirestore.instance
-  //     //     .collection('user')
-  //     //     .doc(user.uid)
-  //     //     .get();
-  //     // UserModel? userModel =
-  //     //     authProvider.fromMap(userData.data() as Map<String, dynamic>);
-  //     // print(userModel!.userName);
-  //     return Login();
-  //   } else {
-  //     return Login();
-  //   }
-  // }
-  // This widget is the root of your application.
+  Future userSignedIn() async {
+    User user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return SplashScreen();
+    } else {
+      return SignupLoginScreen();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         title: 'dyslexiaa',
         theme: ThemeData(
           fontFamily: "Lexend",
           backgroundColor: Color.fromARGB(255, 241, 239, 239),
           primarySwatch: Colors.blue,
         ),
-        //  home: FutureBuilder(
-        //     future: userSignedIn(),
-        //     builder: (context, AsyncSnapshot snapshot) {
-        //       if (snapshot.hasData) {
-        //         return snapshot.data;
-        //       }
-        //       return Scaffold(
-        //           body: Center(
-        //         child: CircularProgressIndicator(),
-        //       ));
-        //     }
-        //     ),
-        initialRoute: DashboardScreen.routeName,
+        home: FutureBuilder(
+            future: userSignedIn(),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data;
+              }
+              return Scaffold(
+                  body: Center(
+                child: CircularProgressIndicator(),
+              ));
+            }),
         routes: {
           SplashScreen.routeName: (ctx) => SplashScreen(),
           AnimationWidget.routeName: (ctx) => AnimationWidget(),
-          //OnBoardScreen.routeName: (ctx) => OnBoardScreen(),
           FirstOnboardScreen.routeName: (ctx) => FirstOnboardScreen(),
           SecondOnboardingScreen.routeName: (ctx) => SecondOnboardingScreen(),
           ThirdOnboardingScreen.routeName: (ctx) => ThirdOnboardingScreen(),
           SignupLoginScreen.routeName: (ctx) => SignupLoginScreen(),
           ActivityScreen.routeName: (ctx) => ActivityScreen(),
           MathActivityScreen.routeName: (ctx) => MathActivityScreen(),
-          BottomNavBarV2.routeName: (ctx) => BottomNavBarV2(),
+          BottomNavBarV2.routeName: (ctx) => BottomNavBarV2(5),
           TableContent4To6.routeName: (ctx) => TableContent4To6(),
           TableContent7To11.routeName: (ctx) => TableContent7To11(),
           TableOfTwo.routeName: (ctx) => TableOfTwo(),
@@ -200,8 +208,8 @@ class MyApp extends StatelessWidget {
           FillBlanksZ.routeName: (ctx) => FillBlanksZ(),
           DashboardScreen.routeName: (ctx) => DashboardScreen(),
           DrawingBoard.routeName: (ctx) => DrawingBoard(),
-          SettingsUI.routeName: (ctx) => SettingsUI(),
-          SettingsScreen.routeName: (ctx) => SettingsScreen(),
+          //SettingsUI.routeName: (ctx) => SettingsUI(),
+          //  SettingsScreen.routeName: (ctx) => SettingsScreen(),
           DragGameOnScreen.routeName: (ctx) => DragGameOnScreen(),
           DragGame.routeName: (ctx) => DragGame(),
           DragGameSplash.routeName: (ctx) => DragGameSplash(),
@@ -213,6 +221,11 @@ class MyApp extends StatelessWidget {
           ParentsGuidance.routeName: (ctx) => ParentsGuidance(),
           ParentsGuidance2.routeName: (ctx) => ParentsGuidance2(),
           ParentsGuidance1.routeName: (ctx) => ParentsGuidance1(),
+          NewsHome.routeName: (ctx) => NewsHome(),
+          ActivityProgressDetail.routeName: (ctx) => ActivityProgressDetail(),
+          GameProgressDetail.routeName: (ctx) => GameProgressDetail(),
+
+
         });
   }
 }

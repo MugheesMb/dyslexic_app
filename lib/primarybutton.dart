@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String buttonText;
-  PrimaryButton({required this.buttonText});
+  const PrimaryButton({required this.buttonText});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

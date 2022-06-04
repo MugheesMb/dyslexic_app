@@ -61,7 +61,7 @@ class _Addition4To6_9State extends State<Addition4To6_9> {
           )),
       body: SingleChildScrollView(
         child: Stack(children: [
-          Container(
+          SizedBox(
             width: size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +95,7 @@ class _Addition4To6_9State extends State<Addition4To6_9> {
                 ),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                         height: 200,
                         width: 200,
                         child: Image.asset("pic/kid.png")),
@@ -131,7 +131,7 @@ class _Addition4To6_9State extends State<Addition4To6_9> {
             // bottom: selected ? 8 : 100,
             duration: const Duration(seconds: 2),
             curve: Curves.fastOutSlowIn,
-            child: Container(
+            child: SizedBox(
               height: 70,
               width: 70,
               child: InkWell(
@@ -161,7 +161,7 @@ class _Addition4To6_9State extends State<Addition4To6_9> {
           )
         ]),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: 80,
         width: 80,
         child: FloatingActionButton(

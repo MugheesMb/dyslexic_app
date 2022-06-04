@@ -1,9 +1,5 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors,
 
-import 'package:dyslexiaa/MathActivites/add4to6/addition_1_4to6.dart';
-
-import '../MathActivites/subt4o6/subtratction_1_4to6.dart';
-import 'age_popup.dart';
 import 'package:flutter/material.dart';
 
 class GridViewWidget extends StatelessWidget {
@@ -18,8 +14,9 @@ class GridViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+      padding: EdgeInsets.fromLTRB(0, size.height / 35, 0, 0),
       child: Material(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(35),
@@ -44,19 +41,17 @@ class GridViewWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                         child: Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromARGB(255, 0, 0, 0)),
+                          style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.all(10),
-                        height: 180,
-                        width: 220,
+                        height: size.height / 5,
+                        width: size.width / 2.5,
                         child: Image.asset(
                           imageUrl,
                           alignment: Alignment.center,

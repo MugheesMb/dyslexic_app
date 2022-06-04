@@ -15,6 +15,7 @@ class ActivityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       appBar: AppBar(
@@ -27,21 +28,19 @@ class ActivityScreen extends StatelessWidget {
         backgroundColor: Color.fromRGBO(110, 202, 243, 1),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: BottomNavBarV2(),
+        child: BottomNavBarV2(0),
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              ActivityCardWidget("Mathematics", 5, "pic/black board.jpg",
-                  [204, 153, 254], MathActivityScreen()),
-              ActivityCardWidget("Reading", 3, "pic/kid.png", [12, 153, 172],
-                  ReadingActivityScreen()),
-              ActivityCardWidget("Writing", 2, "pic/pencil.png",
-                  [246, 177, 135], WritingActivityScreen()),
-            ]),
-      ),
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            ActivityCardWidget("Mathematics", 5, "pic/black board.jpg",
+                [204, 153, 254], MathActivityScreen()),
+            ActivityCardWidget("Reading", 3, "pic/kid.png", [12, 153, 172],
+                ReadingActivityScreen()),
+            ActivityCardWidget("Writing", 2, "pic/pencil.png", [246, 177, 135],
+                WritingActivityScreen()),
+          ]),
     );
   }
 }

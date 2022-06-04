@@ -3,11 +3,8 @@ import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:dyslexiaa/bottom_bar.dart';
 import 'package:dyslexiaa/chatScreen/chat_scrren_.dart';
 import 'package:dyslexiaa/chatScreen/psycho_screen.dart';
-import 'package:dyslexiaa/profile/avatar.dart';
-import 'package:dyslexiaa/profile/avatar2.dart';
 import 'package:dyslexiaa/provider/locator.dart';
 import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class chat_Home extends StatefulWidget {
@@ -24,10 +21,10 @@ class _chat_HomeState extends State<chat_Home> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('chat'),
+        title: const Text('chat'),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20.0),
+            padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -35,7 +32,7 @@ class _chat_HomeState extends State<chat_Home> {
                     MaterialPageRoute(
                         builder: ((context) => psychologist_Screen())));
               },
-              child: Icon(
+              child: const Icon(
                 Icons.search,
                 size: 26.0,
               ),
@@ -43,7 +40,7 @@ class _chat_HomeState extends State<chat_Home> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(child: BottomNavBarV2(), elevation: 0),
+      bottomNavigationBar: BottomAppBar(child: BottomNavBarV2(2), elevation: 0),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('user')
@@ -53,8 +50,12 @@ class _chat_HomeState extends State<chat_Home> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data.docs.length < 1) {
-              return Center(
-                child: Text("No chats avaialable !"),
+              return const Padding(
+                padding: EdgeInsets.all(35),
+                child: Center(
+                  child: Text(
+                      "No chats avaialable! , click on search Icon to find psychologist"),
+                ),
               );
             }
             return ListView.builder(
@@ -73,17 +74,22 @@ class _chat_HomeState extends State<chat_Home> {
                           return ListTile(
                             leading: FittedBox(
                               child: CircleAvatar(
-                                radius: 45.0,
-                                backgroundImage:
-                                    NetworkImage(friend['photoUrl']),
+                               
+                               child: friend['photoURL'] ==
+                                                        null
+                                                    ? Image.asset('pic/u.png')
+                                                    : Image.network(
+                                                        friend['photoURL'],
+                                                      )
+                                                      
                               ),
                             ),
                             //Avatar(avatarUrl: friend['photoUrl'], onTap: () {  }, ),
-                            title: Text(friend['userName']),
+                            title: Text(friend['displayName']),
                             subtitle: Container(
                                 child: Text(
                               "$lastMsg",
-                              style: TextStyle(color: Colors.grey),
+                              style: const TextStyle(color: Colors.grey),
                               overflow: TextOverflow.ellipsis,
                             )),
                             onTap: () {
@@ -93,16 +99,16 @@ class _chat_HomeState extends State<chat_Home> {
                                       builder: (context) => chat_Screen(
                                           currentUser: user!,
                                           friendId: friend['id'],
-                                          friendImage: friend['photoUrl'],
-                                          friendName: friend['userName'])));
+                                          friendImage: friend['photoURL'],
+                                          friendName: friend['displayName'])));
                             },
                           );
                         }
-                        return LinearProgressIndicator();
+                        return const LinearProgressIndicator();
                       });
                 });
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },

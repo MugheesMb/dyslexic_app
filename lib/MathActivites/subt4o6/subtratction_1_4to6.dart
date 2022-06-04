@@ -37,7 +37,7 @@ class _Subtraction4To6_1State extends State<Subtraction4To6_1> {
       DeviceOrientation.portraitDown,
     ]);
     Size size = MediaQuery.of(context).size;
-    int ans = (no1 * 2).round();
+    int ans = (no1 - 2).round();
     return Scaffold(
       appBar: AppBar(
           title: Text("Subtraction", style: TextStyle(color: Colors.black)),

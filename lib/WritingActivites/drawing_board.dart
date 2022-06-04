@@ -1,11 +1,12 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ui';
+import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:dyslexiaa/WritingActivites/writing_activity_screen.dart';
+import 'package:dyslexiaa/provider/locator.dart';
+import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../progress.dart';
 
+ final progRef = FirebaseFirestore.instance.collection('ProgressDetail');
 class DrawingBoard extends StatefulWidget {
   static const routeName = "/drawing-board";
   const DrawingBoard({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _DrawingBoardState extends State<DrawingBoard> {
   double drawBoard = 0.09;
   Color selectedColor = Colors.black;
   double strokeWidth = 5;
-  List<DrawingPoint> drawingPoints = [];
+   List<DrawingPoint?> drawingPoints = [];
   List<Color> colors = [
     Colors.pink,
     Colors.black87,
@@ -30,24 +31,31 @@ class _DrawingBoardState extends State<DrawingBoard> {
   ];
   @override
   Widget build(BuildContext context) {
+     UserModel? user = locator.get<UserController>().currentUser;
     return Scaffold(
       appBar: AppBar(
-          title: Text("Drawing Board", style: TextStyle(color: Colors.black)),
-          backgroundColor: Color.fromRGBO(178, 145, 186, 1),
+          title: const Text("Drawing Board", style: TextStyle(color: Colors.black)),
+          backgroundColor: const Color.fromRGBO(178, 145, 186, 1),
           elevation: 0,
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
             onPressed: () {
               setState(() {
                 Progress.setDrawBoardValue(drawBoard);
+ Progress.TotalProgress();
+
+    progRef.doc(user!.id).collection('ActivityDetail').doc('Drawing Board').set({
+      "Completed": true,
+    });
+    
               });
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WritingActivityScreen()),
+                    builder: (context) => const WritingActivityScreen()),
                 (Route<dynamic> route) => false,
               );
             },
@@ -83,14 +91,15 @@ class _DrawingBoardState extends State<DrawingBoard> {
                 );
               });
             },
-            onPanEnd: (details) {
+            onPanEnd: (val) {
               setState(() {
-                // drawingPoints.add(null);
+                drawingPoints.add(null);
+
               });
             },
             child: CustomPaint(
-              painter: _DrawingPainter(drawingPoints),
-              child: Container(
+              painter: DrawingPainter(drawingPoints),
+              child: SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
               ),
@@ -102,18 +111,18 @@ class _DrawingBoardState extends State<DrawingBoard> {
               child: Row(
                 children: [
                   Slider(
-                      thumbColor: Color.fromRGBO(178, 145, 186, 1),
-                      activeColor: Color.fromRGBO(178, 145, 186, 1),
+                      thumbColor: const Color.fromRGBO(178, 145, 186, 1),
+                      activeColor: const Color.fromRGBO(178, 145, 186, 1),
                       min: 0,
                       max: 40,
                       value: strokeWidth,
                       onChanged: (val) => setState(() => strokeWidth = val)),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(178, 145, 186, 1)),
+                        primary: const Color.fromRGBO(178, 145, 186, 1)),
                     onPressed: () => setState(() => drawingPoints = []),
-                    icon: Icon(Icons.clear),
-                    label: Text("Clear Board"),
+                    icon: const Icon(Icons.clear),
+                    label: const Text("Clear Board"),
                   )
                 ],
               ))
@@ -122,7 +131,7 @@ class _DrawingBoardState extends State<DrawingBoard> {
       bottomNavigationBar: BottomAppBar(
         child: Container(
           color: Colors.grey.shade200,
-          padding: EdgeInsets.all(14),
+          padding: const EdgeInsets.all(14),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(
@@ -156,20 +165,17 @@ class _DrawingBoardState extends State<DrawingBoard> {
   }
 }
 
-class _DrawingPainter extends CustomPainter {
-  final List<DrawingPoint> drawingPoints;
-  _DrawingPainter(this.drawingPoints);
-  List<Offset> offsetList = [];
+class DrawingPainter extends CustomPainter {
+  final List<DrawingPoint?> drawingPoints;
+
+  DrawingPainter(this.drawingPoints);
   @override
   void paint(Canvas canvas, Size size) {
-    for (int i = 0; i < drawingPoints.length; i++) {
-      if (drawingPoints[i] != null && drawingPoints[i + 1] != null) {
-        canvas.drawLine(drawingPoints[i].offset, drawingPoints[i + 1].offset,
-            drawingPoints[i].paint);
-      } else if (drawingPoints[i] != null && drawingPoints[i + 1] == null) {
-        offsetList.clear();
-        offsetList.add(drawingPoints[i].offset);
-        canvas.drawPoints(PointMode.points, offsetList, drawingPoints[i].paint);
+    for (int i = 0; i < drawingPoints.length - 1; i++) {
+      DrawingPoint? current = drawingPoints[i];
+      DrawingPoint? next = drawingPoints[i + 1];
+      if (current != null && next != null) {
+        canvas.drawLine(current.offset, next.offset, current.paint);
       }
     }
   }
@@ -179,8 +185,8 @@ class _DrawingPainter extends CustomPainter {
 }
 
 class DrawingPoint {
-  Offset offset;
-  Paint paint;
+   Offset offset;
+   Paint paint;
 
   DrawingPoint(this.offset, this.paint);
 }

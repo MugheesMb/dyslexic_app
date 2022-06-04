@@ -22,10 +22,10 @@ class TableContent4To6 extends StatelessWidget {
         title: Text("Tables"),
         backgroundColor: Color.fromRGBO(20, 167, 219, 1),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: BottomNavBarV2(),
-        elevation: 0,
-      ),
+      // bottomNavigationBar: BottomAppBar(
+      //   child: BottomNavBarV2(),
+      //   elevation: 0,
+      // ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,

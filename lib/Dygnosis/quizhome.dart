@@ -11,25 +11,27 @@ class Quizhome extends StatelessWidget {
   static const routeName = "/quiz-home";
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(children: [
         Container(
-          height: 1000,
-          width: 420,
+          height: size.height,
+          width: size.width,
           child: Image(
             image: AssetImage("pic/Dyslexia Diagnosis.png"),
             fit: BoxFit.cover,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: EdgeInsets.only(left: 10),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             SizedBox(
-              height: 50,
+              height: 5,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 100, 0, 10),
+              padding: EdgeInsets.fromLTRB(
+                  0, size.height > 600 ? size.height / 4 : 30, 0, 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -49,13 +51,15 @@ class Quizhome extends StatelessWidget {
             ),
             Text(
               "Before Diving into App, we would like to take quiz to check whether you have deslyxia or you are just facing lack of focus. ",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(
+                  fontSize: size.height > 600 ? 20 : 15, color: Colors.white),
               textAlign: TextAlign.left,
             ),
             SizedBox(height: 20),
             Text(
               "Tap \"Start\" to Intialize the Quiz",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(
+                  fontSize: size.height > 600 ? 20 : 15, color: Colors.white),
               textAlign: TextAlign.left,
             ),
             SizedBox(
@@ -65,7 +69,10 @@ class Quizhome extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(QuizMain.routeName);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuizMain()));
                   },
                   child: Text(
                     "Start",

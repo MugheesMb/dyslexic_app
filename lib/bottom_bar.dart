@@ -1,4 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, deprecated_member_use, sized_box_for_whitespace, unnecessary_new
 
 import 'package:dyslexiaa/GamesDisplay.dart';
 import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
@@ -10,22 +9,22 @@ import 'package:dyslexiaa/provider/locator.dart';
 import 'package:dyslexiaa/usercontroller/Usercontroller.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBarV2 extends StatefulWidget {
+
+
+class BottomNavBarV2 extends StatelessWidget {
   static const routeName = "/bottom-bar";
-  @override
-  _BottomNavBarV2State createState() => _BottomNavBarV2State();
-}
+  int currentIndex;
 
-class _BottomNavBarV2State extends State<BottomNavBarV2> {
-  UserModel? user = locator.get<UserController>().currentUser;
-  int currentIndex = 5;
+  BottomNavBarV2(this.currentIndex);
+  // int currentIndex = currrentIndex;
 
-  setBottomBarIndex(index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
+  // setBottomBarIndex(index) {
+  //   setState(() {
+  //     currentIndex = index;
+  //   });
+  // }
 
+UserModel? user = locator.get<UserController>().currentUser;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -35,11 +34,11 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
         children: [
           Positioned(
             child: Container(
-              color: Color.fromRGBO(245, 245, 245, 1),
+              color: const Color.fromRGBO(245, 245, 245, 1),
               width: size.width,
               height: 80,
               child: Stack(
-                overflow: Overflow.visible,
+              //  overflow: Overflow.visible,
                 children: [
                   CustomPaint(
                     size: Size(size.width, 80),
@@ -47,12 +46,12 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                   ),
                   Center(
                     heightFactor: 0.6,
-                    child: Container(
+                    child: SizedBox(
                       height: 70.0,
                       width: 70.0,
                       child: FloatingActionButton(
-                          backgroundColor: Colors.blue[300],
-                          child: Icon(Icons.home),
+                          backgroundColor: const Color.fromRGBO(110, 202, 243, 1),
+                          child: const Icon(Icons.home),
                           elevation: 0.1,
                           onPressed: () {
                             Navigator.pushAndRemoveUntil(
@@ -64,7 +63,7 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                           }),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: size.width,
                     height: 80,
                     child: Row(
@@ -83,14 +82,13 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ActivityScreen()),
+                                      builder: (context) => const ActivityScreen()),
                                   (Route<dynamic> route) => false,
                                 );
-                                setBottomBarIndex(0);
                               },
                               splashColor: Colors.white,
                             ),
-                            Text("Activity")
+                            const Text("Activity")
                           ],
                         ),
                         Column(
@@ -106,14 +104,15 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => GamesDisplay()),
+                                        builder: (context) => const GamesDisplay()),
                                     (Route<dynamic> route) => false,
                                   );
-                                  currentIndex = 1;
+                                  currentIndex == 1;
                                   //   Navigator.of(context)
                                   //       .pushNamed(GamesDisplay.routeName);
-                                }),
-                            Text("Games")
+                                }
+                                ),
+                            const Text("Games")
                           ],
                         ),
                         Container(
@@ -123,7 +122,7 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                           children: [
                             IconButton(
                                 icon: Icon(
-                                  Icons.messenger,
+                                  Icons.message,
                                   color: currentIndex == 2
                                       ? Colors.blue
                                       : Colors.grey.shade400,
@@ -135,8 +134,9 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                                         builder: (context) => chat_Home()),
                                     (Route<dynamic> route) => false,
                                   );
+                                  currentIndex == 2;
                                 }),
-                            Text("Chat")
+                            const Text("Chat")
                           ],
                         ),
                         Column(
@@ -150,12 +150,14 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
                                 ),
                                 onPressed: () {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: ((context) =>
-                                              Profile_User(user!))));
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Profile_User(user)),
+                                    //(Route<dynamic> route) => false,
+                                  );
+                                  currentIndex == 3;
                                 }),
-                            Text("Profile")
+                            const Text("Profile")
                           ],
                         ),
                       ],
@@ -174,7 +176,7 @@ class _BottomNavBarV2State extends State<BottomNavBarV2> {
 class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = new Paint()
+    Paint paint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.fill;
 
@@ -183,7 +185,7 @@ class BNBCustomPainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.20, 0, size.width * 0.35, 0);
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 20);
     path.arcToPoint(Offset(size.width * 0.60, 20),
-        radius: Radius.circular(20.0), clockwise: false);
+        radius: const Radius.circular(20.0), clockwise: false);
     path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
     path.quadraticBezierTo(size.width, 0, size.width, 0);
     path.lineTo(size.width, size.height);

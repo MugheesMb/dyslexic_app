@@ -6,8 +6,8 @@ import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class authProvider {
+  authProvider();
   final FirebaseAuth auth = FirebaseAuth.instance;
   final CollectionReference userCollectionRef =
       FirebaseFirestore.instance.collection('user');
@@ -16,9 +16,9 @@ class authProvider {
 
     return UserModel(
         id: map['id'],
-        displayName: map['userName'],
+        displayName: map['displayName'],
         email: map['email'],
-        photoURL: map['photoUrL'],
+        photoURL: map['photoURL'],
         createdAt: map['createdAt']);
   }
 
@@ -27,7 +27,7 @@ class authProvider {
 
   //SignUpProvider();
   Future<UserModel?> getUser() async {
-    User? user2 = await auth.currentUser;
+    User? user2 = auth.currentUser;
     DocumentSnapshot userData = await FirebaseFirestore.instance
         .collection('user')
         .doc(user2!.uid)
@@ -35,81 +35,64 @@ class authProvider {
     return authProvider.fromMap(userData.data() as Map<String, dynamic>);
   }
 
-  // Future userSignedIn() async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-  //   if (user != null) {
+  Future signup(String displayName, String email, String password) async {
+    try {
+      var authResult = await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
 
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  // Future userSignedIn() async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-  //   if (user != null) {
-  //     DocumentSnapshot userData = await FirebaseFirestore.instance
-  //         .collection('user')
-  //         .doc(user.uid)
-  //         .get();
-  //     UserModel? userModel =
-  //         UserModel.fromMap(userData.data() as Map<String, dynamic>);
-  //     // print(userModel!.userName);
-  //     return {userModel ,true} ;
-  //   } else {
-  //     return Login();
-  //   }
-  // }
+      _currentUser = UserModel(
+        id: authResult.user!.uid,
+        displayName: displayName,
+        email: email,
+        photoURL: authResult.user!.photoURL,
+        createdAt: DateTime.now().toString(),
+      );
 
-  Future signup(String userName, String email, String password) async {
-    var authResult = await auth.createUserWithEmailAndPassword(
-        email: email, password: password);
+      userCollectionRef.doc(_currentUser!.id).set(_currentUser!.toJson());
 
-    _currentUser = UserModel(
-      id: authResult.user!.uid,
-      displayName: userName,
-      email: email,
-      photoURL: authResult.user!.photoURL,
-      createdAt: DateTime.now().toString(),
-    );
-
-    userCollectionRef.doc(_currentUser!.id).set(_currentUser!.toJson());
-
-    return authResult.user != null;
+      return authResult.user != null;
+    } catch (error) {
+      rethrow;
+    }
   }
 
   Future<UserModel?> signIn(String email, String password) async {
-    var authResult =
-        await auth.signInWithEmailAndPassword(email: email, password: password);
+    try {
+      var authResult = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
 
-    return _currentUser = await getUser() as UserModel?;
+      return _currentUser = await getUser();
+    } catch (error) {
+      rethrow;
+    }
   }
 
   Future UpdateFormData(String displayName) async {
-    var user = await auth.currentUser;
-    await userCollectionRef.doc(user!.uid).update({'userName': displayName});
-
-    // _currentUser = await getUser(user.uid) as UserModel?;
-    // print(currentUser!.userName);
-    // signIn();
+    var user = auth.currentUser;
+    await userCollectionRef.doc(user!.uid).update({'displayName': displayName});
   }
 
   Future<bool> validatePassword(String password) async {
-    var user = await auth.currentUser;
+    var user = auth.currentUser;
     var authCredentials = EmailAuthProvider.credential(
         email: user!.email ?? '', password: password);
-    var authResult =
-        await user.reauthenticateWithCredential(authCredentials);
-    return authResult.user != null;
+    try {
+      var authResult = await user.reauthenticateWithCredential(authCredentials);
+      return authResult.user != null;
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 
   Future<void> updateePassword(String newpassword) async {
-    var user = await auth.currentUser;
+    var user = auth.currentUser;
     user!.updatePassword(newpassword);
   }
-   Future<void> logout(BuildContext context) async {
+
+  Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => Login()));
-  
-}
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => Login()));
+  }
 }

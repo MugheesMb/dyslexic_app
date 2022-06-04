@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace, must_be_immutable
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace, must_be_immutable, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -42,24 +42,35 @@ class GameWidget extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: size.height / 50),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Icon(Icons.person,
-                              color: Color.fromARGB(255, 0, 0, 0)),
-                          Text(age,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0))),
-                          SizedBox(
-                            width: size.width / 2.5,
+                          Row(
+                            children: [
+                              Icon(Icons.person,
+                                  color: Color.fromARGB(255, 0, 0, 0)),
+                              Text(age,
+                                  style: TextStyle(
+                                      fontFamily: "Lexend",
+                                      color: Color.fromARGB(255, 0, 0, 0))),
+                            ],
                           ),
-                          Icon(Icons.access_time,
-                              color: Color.fromARGB(255, 0, 0, 0)),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Text(
-                            time,
-                            style:
-                                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                          // SizedBox(
+                          //   width: size.width / 3,
+                          // ),
+                          Row(
+                            children: [
+                              Icon(Icons.access_time,
+                                  color: Color.fromARGB(255, 0, 0, 0)),
+                              SizedBox(
+                                width: 0,
+                              ),
+                              Text(
+                                time,
+                                style: TextStyle(
+                                    fontFamily: "Lexend",
+                                    color: Color.fromARGB(255, 0, 0, 0)),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -71,12 +82,13 @@ class GameWidget extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                       child: Container(
-                          height: 150,
-                          width: 150,
+                          height: size.height > 550 ? 150 : 80,
+                          width: size.height > 550 ? 150 : 80,
                           child: Center(child: Image.asset(gameImage))),
                     ),
                     Text(gameTitle,
                         style: TextStyle(
+                            fontFamily: "Lexend",
                             color: Color.fromARGB(255, 0, 0, 0),
                             fontSize: 25,
                             fontWeight: FontWeight.bold)),
@@ -86,11 +98,15 @@ class GameWidget extends StatelessWidget {
                       endIndent: 80,
                       indent: 80,
                     ),
-                    SizedBox(height: size.height / 20),
+                    SizedBox(
+                        height: size.height > 550
+                            ? size.height / 20
+                            : size.height / 30),
                     Text(
                       "Description",
                       textAlign: TextAlign.left,
                       style: TextStyle(
+                          fontFamily: "Lexend",
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                           color: Color.fromARGB(255, 0, 0, 0)),
@@ -99,12 +115,21 @@ class GameWidget extends StatelessWidget {
                       gameDes,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                          fontFamily: "Lexend",
+                          fontSize: size.height > 550 ? 15 : 12,
+                          color: Color.fromARGB(255, 0, 0, 0)),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: size.height / 20),
+                      padding: EdgeInsets.fromLTRB(
+                          0,
+                          size.height > 550
+                              ? size.height / 20
+                              : size.height / 150,
+                          0,
+                          0),
                       child: Icon(Icons.play_arrow_rounded,
-                          color: Color.fromARGB(255, 0, 0, 0), size: 150),
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          size: size.height > 550 ? 150 : 60),
                     )
                   ],
                 ),

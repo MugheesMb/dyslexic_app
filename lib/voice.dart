@@ -66,8 +66,8 @@ class _speechUIState extends State<speechUI> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Reading"),
-          backgroundColor: Color.fromRGBO(220, 20, 59, 1),
+          title: const Text("Reading"),
+          backgroundColor: const Color.fromRGBO(220, 20, 59, 1),
           elevation: 0),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: AvatarGlow(

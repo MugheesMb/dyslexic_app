@@ -13,20 +13,21 @@ class SignupLoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(237, 237, 237, 1),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+          SizedBox(
+              height: size.height > 700 ? 300 : 250,
               child: SvgPicture.asset("pic/Launch Screen.svg")),
           Center(
             child: RichText(
               text: TextSpan(
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 85.0,
+                    fontSize: size.height > 700 ? 85 : 40,
                     fontFamily: "Dongle",
                   ),
                   children: <TextSpan>[
@@ -34,18 +35,22 @@ class SignupLoginScreen extends StatelessWidget {
                         text: "dys",
                         style:
                             TextStyle(color: Color.fromRGBO(108, 202, 244, 1))),
-                    TextSpan(text: "lexia")
+                    TextSpan(text: "lexic")
                   ]),
             ),
           ),
           Text("Designed For Children",
-              style: TextStyle(fontSize: 27.0, fontFamily: "Dongle")),
-          SizedBox(height: 130),
+              style: TextStyle(
+                  fontSize: size.height > 700 ? 27 : 20, fontFamily: "Dongle")),
+          SizedBox(height: size.height > 700 ? 20 : 0),
           Container(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+              padding: EdgeInsets.fromLTRB(0, size.height > 700 ? 20 : 5, 0, 5),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Login.routeName);
+                        Navigator.push(context, MaterialPageRoute(
+   builder: (context) => Login()
+   )
+ );
                 },
                 child: Text("Log In"),
                 style: ElevatedButton.styleFrom(
@@ -56,13 +61,21 @@ class SignupLoginScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         //to set border radius to button
                         borderRadius: BorderRadius.circular(30)),
-                    padding: EdgeInsets.fromLTRB(115, 20, 115, 20)),
+                    padding: EdgeInsets.fromLTRB(
+                        size.height > 700 ? 115 : 80,
+                        size.height > 700 ? 20 : 10,
+                        size.height > 700 ? 115 : 80,
+                        size.height > 700 ? 20 : 10)),
               )),
           Container(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+              padding:
+                  EdgeInsets.fromLTRB(0, size.height > 700 ? 20 : 10, 0, 5),
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Signup.routeName);
+                  Navigator.push(context, MaterialPageRoute(
+   builder: (context) => Signup()
+   )
+ );
                 },
                 child: Text(
                   "Create an Account",
@@ -73,7 +86,11 @@ class SignupLoginScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         //to set border radius to button
                         borderRadius: BorderRadius.circular(30)),
-                    padding: EdgeInsets.fromLTRB(70, 20, 70, 20)),
+                    padding: EdgeInsets.fromLTRB(
+                        size.height > 700 ? 75 : 40,
+                        size.height > 700 ? 20 : 10,
+                        size.height > 700 ? 75 : 40,
+                        size.height > 700 ? 20 : 10)),
               ))
         ],
       ),

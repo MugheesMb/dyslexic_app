@@ -61,7 +61,7 @@ class _Addition7To11_4State extends State<Addition7To11_4> {
           )),
       body: SingleChildScrollView(
         child: Stack(children: [
-          Container(
+          SizedBox(
             width: size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +95,7 @@ class _Addition7To11_4State extends State<Addition7To11_4> {
                 ),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                         height: 200,
                         width: 200,
                         child: Image.asset("pic/kid.png")),
@@ -107,16 +107,16 @@ class _Addition7To11_4State extends State<Addition7To11_4> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      OptionBox(ans + 2, [182, 216, 243]),
-                      OptionBox(ans + 4, [182, 216, 243]),
-                      OptionBox(ans + 1, [182, 216, 243]),
+                      OptionBox(ans + 2, const [182, 216, 243]),
+                      OptionBox(ans + 4, const [182, 216, 243]),
+                      OptionBox(ans + 1, const [182, 216, 243]),
                     ]),
                 SizedBox(height: size.height / 30),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      OptionBox(ans + 3, [182, 216, 243]),
-                      OptionBox(ans + 5, [182, 216, 243]),
+                      OptionBox(ans + 3, const [182, 216, 243]),
+                      OptionBox(ans + 5, const [182, 216, 243]),
                       SizedBox(height: size.height / 70, width: size.width / 6),
                     ])
               ],
@@ -131,7 +131,7 @@ class _Addition7To11_4State extends State<Addition7To11_4> {
             // bottom: selected ? 8 : 100,
             duration: const Duration(seconds: 2),
             curve: Curves.fastOutSlowIn,
-            child: Container(
+            child: SizedBox(
               height: 70,
               width: 70,
               child: InkWell(
@@ -161,7 +161,7 @@ class _Addition7To11_4State extends State<Addition7To11_4> {
           )
         ]),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: 80,
         width: 80,
         child: FloatingActionButton(
