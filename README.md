@@ -5,15 +5,15 @@ To view  live How to run this app, **[click here](https://www.youtube.com/watch?
 
 ##Sections 📚
 
-✔️ Onboarding Screens
-✔️ Login/SignUp
-✔️ Diagnostic Screen
-✔️ Activity Screen (RLW Sceen)
-✔️ Dyslexic Games
-✔️ Dashboard Screen 
-✔️ Deep Progress
-✔️ Chat Messenger (Psychologist Screen)
-✔️ Dyslexic News
+✔️ Onboarding Screens\
+✔️ Login/SignUp\
+✔️ Diagnostic Screen\
+✔️ Activity Screen (RLW Sceen)\
+✔️ Dyslexic Games\
+✔️ Dashboard Screen\ 
+✔️ Deep Progress\
+✔️ Chat Messenger (Psychologist Screen)\
+✔️ Dyslexic News\
 ✔️ Profile Screen
 
 
