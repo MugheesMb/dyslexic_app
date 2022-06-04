@@ -1,16 +1,11 @@
-# lop
+<h1 align="center"> Software Developers Identity(portfolio) 🔥 </h1> 
+<h3 align="center"> The most amazing ,beautiful, simple and  responsive portfolio template for Software Developers! </h3>
 
-A new Flutter project.
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/93919142-b83fe080-fd26-11ea-90e2-c5684cb02d42.gif"></img>
+  </kbd>
+</p>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  <a align="center" href="https://reactjs.org/"><img alt="Made With React" src="https://img.shields.io/badge/made%20with-react-61DAFB?style=flat-square" /></a>
+   <a align="center" href="http://badges.mit-license.org/"><img alt="License" src="http://img.shields.io/:license-mit-blue.svg?style=flat-square?style=flat-square" /></a>
