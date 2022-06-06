@@ -60,7 +60,7 @@ you can also  goto the video i provided above and start watching from 1:30 and w
   </kbd>
 </p>
 
-##Next goto firestore database from the side panel under authentication and click on create data base and click on start in test mode and click next and next. then you will see somthing like this.. look at image below.
+## Next goto firestore database from the side panel under authentication and click on create data base and click on start in test mode and click next and next. then you will see somthing like this.. look at image below.
 
 <p align="center">
   <kbd>
@@ -68,7 +68,7 @@ you can also  goto the video i provided above and start watching from 1:30 and w
   </kbd>
 </p>
 
-##Next do same with the Storage under firestore database and after creating click on rules like look at the image...! and edit the rules as i did..!
+## Next do same with the Storage under firestore database and after creating click on rules like look at the image...! and edit the rules as i did..!
 
 <p align="center">
   <kbd>
@@ -77,7 +77,7 @@ you can also  goto the video i provided above and start watching from 1:30 and w
 </p>
 
 
-##Next goto project setting look at the image 
+## Next goto project setting look at the image 
 
 
 <p align="center">
@@ -85,6 +85,26 @@ you can also  goto the video i provided above and start watching from 1:30 and w
 <img src="https://user-images.githubusercontent.com/62281201/161636774-4b17a48a-b4d9-48d0-9db5-9fbc2fdcb529.png"></img>
   </kbd>
 </p>
+# and click on android
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/172189844-08699a38-d2fa-4998-92bc-2779d5c00119.png"></img>
+  </kbd>
+</p>
+
+#Next you will see screen of registring app and they will ask you to write android package name , to find that android package name go into your project > android folder > app > src > build gradles and in this file you will find your project name, look at the image below..!
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/161643006-83afd412-8af3-4319-9364-e2299e9b1ef1.png"></img>
+  </kbd>
+</p>
+
+# Copy and write that app name in your register name app field and click on next they will ask you to download config file u can ignore and next you have to add firebase SDK in your project for that goto
+
+
+
 
 
 
