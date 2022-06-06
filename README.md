@@ -93,7 +93,7 @@ you can also  goto the video i provided above and start watching from 1:30 and w
   </kbd>
 </p>
 
-# Copy and write that app name in your register name app field and click on next they will ask you to download config file u can ignore and next you have to add firebase SDK in your project for that goto project > build gradle file llok at image..!
+# Copy and write that app name in your register name app field and click on next they will ask you to download config file u can ignore and next you have to add firebase SDK in your project for that goto project > build gradle file look at image..!
 
 <p align="center">
   <kbd>
@@ -103,13 +103,34 @@ you can also  goto the video i provided above and start watching from 1:30 and w
 
 ## Next just follow along with firebase instruction and you will be good..!
 
-## Next got project setting look at the image below..!
+## Next goto project setting look at the image below..!
 
 <p align="center">
   <kbd>
 <img src="https://user-images.githubusercontent.com/62281201/161636774-4b17a48a-b4d9-48d0-9db5-9fbc2fdcb529.png"></img>
   </kbd>
 </p>
+
+## and scroll down and you will see something like this ..!!
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/161078438-b1eb3464-02da-4bb2-89bd-8ddbb6a7ea57.png"></img>
+  </kbd>
+</p>
+
+## next you gotta add SHA fingerprints of your VS code so for that you can goto cmd and write these commands to get your SHA1 and SHA2 keys..!
+
+```
+# Command 1
+$ set PATH=C:\Program Files\Android\Android Studio\jre\bin
+
+# Command 2 and in here :\Users\computer you gotta write your computer name like mine is computer..! and this command will give you both keys.!
+$ keytool -list -v -keystore "C:\Users\computer\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+```
+
+
+
 
 
 
