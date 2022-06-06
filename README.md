@@ -36,7 +36,8 @@ $ flutter pub get
 
 ```
 
-
+#after that we need to connect  firebase within our app So , for that goto firebase website https://firebase.google.com/  and make account and setup your firebase
+, you can goto the video i provided above and start watching from 1:30 and watch it till end , and it will connect your firebase with in app and after that you are good to use this app.
 
 
 
