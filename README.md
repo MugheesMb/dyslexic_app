@@ -77,15 +77,7 @@ you can also  goto the video i provided above and start watching from 1:30 and w
 </p>
 
 
-## Next goto project setting look at the image 
-
-
-<p align="center">
-  <kbd>
-<img src="https://user-images.githubusercontent.com/62281201/161636774-4b17a48a-b4d9-48d0-9db5-9fbc2fdcb529.png"></img>
-  </kbd>
-</p>
-# and click on android
+## Next goto project overview  and click on android ..!
 
 <p align="center">
   <kbd>
@@ -101,7 +93,25 @@ you can also  goto the video i provided above and start watching from 1:30 and w
   </kbd>
 </p>
 
-# Copy and write that app name in your register name app field and click on next they will ask you to download config file u can ignore and next you have to add firebase SDK in your project for that goto
+# Copy and write that app name in your register name app field and click on next they will ask you to download config file u can ignore and next you have to add firebase SDK in your project for that goto project > build gradle file llok at image..!
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/172191713-93f2cff1-7f29-46e7-ad09-62de5f4133f8.png"></img>
+  </kbd>
+</p>
+
+## Next just follow along with firebase instruction and you will be good..!
+
+## Next got project setting look at the image below..!
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/161636774-4b17a48a-b4d9-48d0-9db5-9fbc2fdcb529.png"></img>
+  </kbd>
+</p>
+
+
 
 
 
