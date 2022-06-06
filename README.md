@@ -21,6 +21,23 @@ To view  live How to run this app, **[click here](https://www.youtube.com/watch?
 - https://docs.flutter.dev/get-started/install/windows
 -  , after the successful of setup installation, clone the repository into your local system using below command:
 
+```bash
+# Clone this repository
+$ git clone https://github.com/MugheesMb/dyslexic_app.git
+
+# Go into the repository
+$ cd dyslexic_app
+
+# Open project in VS code
+$ code .
+
+# Install dependencies by going to pubspec.yaml
+$ flutter pub get
+
+```
+
+
+
 
 
 
