@@ -128,6 +128,38 @@ $ set PATH=C:\Program Files\Android\Android Studio\jre\bin
 # Command 2 and in here :\Users\computer you gotta write your computer name like mine is computer..! and this command will give you both keys.!
 $ keytool -list -v -keystore "C:\Users\computer\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
 ```
+## after adding both keys your screen will look like this..!
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/161079714-e9f7f2d0-0420-4f4f-9f93-85aebc3c75f7.png"></img>
+  </kbd>
+</p>
+
+## next simple click on download  (google service.json file) ..!
+
+## and keep this file in project > android > app look at image below..!
+
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/172194978-0076dea6-7558-4b50-b41d-6cd42470c6fc.png"></img>
+  </kbd>
+</p>
+
+
+# This is it , next simply start emulator and run this app :)
+
+## and if you are having any trouble in ruuning this app just email us and we'll help you ASAP..!
+
+```
+# mr.mugy4@gmail.com
+# abdullahayaz529@gmail.com
+
+```
+
+
+
 
 
 
