@@ -60,8 +60,31 @@ you can also  goto the video i provided above and start watching from 1:30 and w
   </kbd>
 </p>
 
+##Next goto firestore database from the side panel under authentication and click on create data base and click on start in test mode and click next and next. then you will see somthing like this.. look at image below.
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/172188521-99306892-1c8c-4360-aea0-eb120573a2e0.png"></img>
+  </kbd>
+</p>
+
+##Next do same with the Storage under firestore database and after creating click on rules like look at the image...! and edit the rules as i did..!
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/161072082-9d042768-0bd8-4007-8487-4b68e2f89129.png"></img>
+  </kbd>
+</p>
 
 
+##Next goto project setting look at the image 
+
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/161636774-4b17a48a-b4d9-48d0-9db5-9fbc2fdcb529.png"></img>
+  </kbd>
+</p>
 
 
 
