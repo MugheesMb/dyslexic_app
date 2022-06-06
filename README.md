@@ -43,6 +43,15 @@ $ flutter pub get
 you can also  goto the video i provided above and start watching from 1:30 and watch it till end , and it will connect your firebase with in app and after that you are good to use this app.
 ```
 
+## after going to firebase website , click on console on upper right corner then click on new project and add new name to it. and click continue anf create project and it will take a few seconds..!
+
+
+<p align="center">
+  <kbd>
+<img src="https://user-images.githubusercontent.com/62281201/93919142-b83fe080-fd26-11ea-90e2-c5684cb02d42.gif"></img>
+  </kbd>
+</p>
+
 
 
 
