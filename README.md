@@ -34,6 +34,9 @@ $ code .
 # Install dependencies by going to pubspec.yaml
 $ flutter pub get
 
+# To run the project
+$ flutter run
+
 ```
 
 #after that we need to connect  firebase within our app So , for that goto firebase website https://firebase.google.com/  and make account and setup your firebase
