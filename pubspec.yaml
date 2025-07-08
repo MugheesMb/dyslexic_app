@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.15.1 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,6 +40,7 @@ dependencies:
   cached_network_image: ^3.2.1
   percent_indicator: ^4.2.2
   device_preview: ^1.1.0
+  flip_card: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -62,14 +63,14 @@ dev_dependencies:
   speech_to_text: ^5.4.3
   clipboard: ^0.1.3
   google_fonts: ^2.3.1
-  flip_card: ^0.4.4
+  # flip_card: ^0.4.4  # Removed due to incompatibility with Dart 3.x
   expandable: ^5.0.1
-  cloud_firestore: ^3.1.10
-  firebase_auth: ^3.3.10
-  firebase_storage: ^10.2.9
-  google_sign_in: ^5.2.4
-  shared_preferences: ^2.0.13
-  firebase_core: ^1.13.1
+  cloud_firestore: ^4.17.3
+  firebase_auth: ^4.19.4
+  firebase_storage: ^11.7.4
+  google_sign_in: ^6.2.1
+  shared_preferences: ^2.2.3
+  firebase_core: ^2.30.1
   image_picker: ^0.8.4
   get_it: ^7.2.0
   blurhash: ^1.0.0

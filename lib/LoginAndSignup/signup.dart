@@ -227,7 +227,7 @@ class _SignupState extends State<Signup> {
                                 style: TextStyle(fontSize: 15)),
                           ),
                           style: ElevatedButton.styleFrom(
-                              primary: Color.fromRGBO(108, 202, 244, 1),
+                              backgroundColor: Color.fromRGBO(108, 202, 244, 1),
                               side: BorderSide(
                                   width: 6,
                                   color: Color.fromRGBO(108, 202, 244, 1)),

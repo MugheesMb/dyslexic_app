@@ -166,7 +166,7 @@ class _DrawingClassState extends State<DrawingClass> {
                     },
                     child: Text("Next"),
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(178, 145, 186, 1),
+                        backgroundColor: Color.fromRGBO(178, 145, 186, 1),
                         side: BorderSide(
                             width: 6, color: Color.fromRGBO(178, 145, 186, 1)),
                         elevation: 2,

@@ -180,7 +180,7 @@ class _LoginState extends State<Login> {
                   onPressed: _submit2,
                   child: const Text("Log In"),
                   style: ElevatedButton.styleFrom(
-                      primary: const Color.fromRGBO(108, 202, 244, 1),
+                      backgroundColor: const Color.fromRGBO(108, 202, 244, 1),
                       side: const BorderSide(
                           width: 6, color: Color.fromRGBO(108, 202, 244, 1)),
                       elevation: 2,

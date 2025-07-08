@@ -424,7 +424,7 @@ class _Letters4To6State extends State<Letters4To6> {
                 },
                 child: Text("Next Letter"),
                 style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(220, 20, 59, 1),
+                    backgroundColor: Color.fromRGBO(220, 20, 59, 1),
                     side: BorderSide(
                       width: 2,
                       color: Color.fromRGBO(220, 20, 59, 1),

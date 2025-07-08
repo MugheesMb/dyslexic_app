@@ -1,4 +1,4 @@
-// @dart=2.9
+
 // ignore_for_file: unused_import, prefer_const_constructors, use_key_in_widget_constructors
 import 'package:dyslexiaa/DragGameOnScreen.dart';
 import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
@@ -115,7 +115,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp();
   Future userSignedIn() async {
-    User user = FirebaseAuth.instance.currentUser;
+    User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       return SplashScreen();
     } else {
@@ -132,9 +132,7 @@ class MyApp extends StatelessWidget {
         builder: DevicePreview.appBuilder,
         title: 'dyslexiaa',
         theme: ThemeData(
-          fontFamily: "Lexend",
-          backgroundColor: Color.fromARGB(255, 241, 239, 239),
-          primarySwatch: Colors.blue,
+          fontFamily: "Lexend", colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: Color.fromARGB(255, 241, 239, 239)),
         ),
         home: FutureBuilder(
             future: userSignedIn(),

@@ -472,7 +472,7 @@ class _LettersState extends State<Letters> {
                 child:
                     Text("Next Letter", style: TextStyle(color: Colors.black)),
                 style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(153, 201, 169, 1),
+                    backgroundColor: Color.fromRGBO(153, 201, 169, 1),
                     side: BorderSide(
                       width: 2,
                       color: Color.fromRGBO(153, 201, 169, 1),

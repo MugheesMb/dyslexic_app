@@ -119,7 +119,7 @@ class _DrawingBoardState extends State<DrawingBoard> {
                       onChanged: (val) => setState(() => strokeWidth = val)),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color.fromRGBO(178, 145, 186, 1)),
+                        backgroundColor: const Color.fromRGBO(178, 145, 186, 1)),
                     onPressed: () => setState(() => drawingPoints = []),
                     icon: const Icon(Icons.clear),
                     label: const Text("Clear Board"),

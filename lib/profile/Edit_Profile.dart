@@ -166,9 +166,11 @@ class Edit_ProfileState extends State<Edit_Profile> {
               SizedBox(
                 height: 55,
                 width: double.maxFinite,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _submitedit,
-                  color: Colors.black54,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black54,
+                  ),
                   child: const Center(
                     child: Text(
                       "Update",

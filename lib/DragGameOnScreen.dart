@@ -54,7 +54,7 @@ class DragGameOnScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 63, 255, 143),
+                        backgroundColor: Color.fromARGB(255, 63, 255, 143),
                         side: BorderSide(width: 3, color: Colors.black),
                         shape: RoundedRectangleBorder(
                             //to set border radius to button
@@ -70,7 +70,7 @@ class DragGameOnScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 63, 255, 143),
+                        backgroundColor: Color.fromARGB(255, 63, 255, 143),
                         side: BorderSide(width: 3, color: Colors.black),
                         shape: RoundedRectangleBorder(
                             //to set border radius to button
@@ -84,7 +84,7 @@ class DragGameOnScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 63, 255, 143),
+                        backgroundColor: Color.fromARGB(255, 63, 255, 143),
                         side: BorderSide(width: 3, color: Colors.black),
                         shape: RoundedRectangleBorder(
                             //to set border radius to button

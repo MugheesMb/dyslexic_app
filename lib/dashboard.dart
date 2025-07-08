@@ -274,7 +274,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                     return ElevatedButton(
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                                primary: Color
+                                                                backgroundColor: Color
                                                                     .fromRGBO(
                                                                         110,
                                                                         202,
@@ -537,7 +537,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                                     return ElevatedButton(
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                                primary: Color
+                                                                backgroundColor: Color
                                                                     .fromRGBO(
                                                                         110,
                                                                         202,
