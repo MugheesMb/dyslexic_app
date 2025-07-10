@@ -387,9 +387,8 @@ class _LettersState extends State<Letters> {
       floatingActionButton: AvatarGlow(
         animate: _isListening,
         glowColor: Color.fromRGBO(153, 201, 169, 1),
-        endRadius: 75.0,
+   // radius: 75.0, // Use 'radius' as per AvatarGlow API
         duration: const Duration(milliseconds: 2000),
-        repeatPauseDuration: const Duration(milliseconds: 100),
         repeat: true,
         child: Container(
           height: 100,

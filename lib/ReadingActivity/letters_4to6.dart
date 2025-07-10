@@ -337,9 +337,9 @@ class _Letters4To6State extends State<Letters4To6> {
       floatingActionButton: AvatarGlow(
         // animate: _isListening,
         // glowColor: Color.fromRGBO(220, 20, 59, 1),
-        endRadius: 75.0,
+        // endRadius: 75.0,
         duration: const Duration(milliseconds: 200),
-        repeatPauseDuration: const Duration(milliseconds: 100),
+        // repeatPauseDuration: const Duration(milliseconds: 100),
         repeat: false,
         child: Container(
           height: 100,

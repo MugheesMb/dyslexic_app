@@ -368,7 +368,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           builder: (context, snapshot) {
                                             return AvatarGlow(
                                               glowColor: Colors.cyanAccent,
-                                              endRadius: 60.0,
+                                              // endRadius: 60.0,
                                               child: CircularPercentIndicator(
                                                 animationDuration: 1500,
                                                 radius: size.height > 550
@@ -424,7 +424,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           builder: (context, snapshot) {
                                             return AvatarGlow(
                                               glowColor: Colors.cyanAccent,
-                                              endRadius: 60.0,
+                                              // endRadius: 60.0,
                                               child: CircularPercentIndicator(
                                                 animationDuration: 1500,
                                                 radius: size.height > 550

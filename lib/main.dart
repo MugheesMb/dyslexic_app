@@ -1,4 +1,3 @@
-
 // ignore_for_file: unused_import, prefer_const_constructors, use_key_in_widget_constructors
 import 'package:dyslexiaa/DragGameOnScreen.dart';
 import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
@@ -106,10 +105,7 @@ void main() async {
   //     builder: (context) =>   MyApp()
   //   )
   //  );
-  runApp(
-      MyApp()
-    
-   );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -132,7 +128,9 @@ class MyApp extends StatelessWidget {
         builder: DevicePreview.appBuilder,
         title: 'dyslexiaa',
         theme: ThemeData(
-          fontFamily: "Lexend", colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: Color.fromARGB(255, 241, 239, 239)),
+          fontFamily: "Lexend",
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+              .copyWith(background: Color.fromARGB(255, 241, 239, 239)),
         ),
         home: FutureBuilder(
             future: userSignedIn(),
@@ -222,8 +220,6 @@ class MyApp extends StatelessWidget {
           NewsHome.routeName: (ctx) => NewsHome(),
           ActivityProgressDetail.routeName: (ctx) => ActivityProgressDetail(),
           GameProgressDetail.routeName: (ctx) => GameProgressDetail(),
-
-
         });
   }
 }

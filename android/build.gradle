@@ -1,14 +1,14 @@
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.8.10'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.google.gms:google-services:4.4.3'
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.1' // Add this line
     }
 }
 
@@ -19,6 +19,17 @@ allprojects {
     }
 }
 
+subprojects { subproject ->
+    if (subproject.name == "audioplayers_android") {
+        subproject.plugins.withId("com.android.library") {
+            subproject.android {
+                namespace = "xyz.audioplayers.android"
+            }
+        }
+    }
+}
+
+
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
@@ -27,6 +38,16 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register("clean", Delete) {
+    delete rootProject.layout.buildDirectory
+}
+
+subprojects { subproject ->
+    if (subproject.name == "blurhash") {
+        subproject.plugins.withId("com.android.library") {
+            subproject.android {
+                namespace = "dev.blurhash.library"
+            }
+        }
+    }
 }

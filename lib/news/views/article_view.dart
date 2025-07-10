@@ -14,8 +14,14 @@ class ArticleView extends StatefulWidget {
 }
 
 class _ArticleViewState extends State<ArticleView> {
-  final Completer<WebViewController> _completer =
-      Completer<WebViewController>();
+  late final WebViewController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = WebViewController()
+      ..loadRequest(Uri.parse(widget.blogUrl));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +56,7 @@ class _ArticleViewState extends State<ArticleView> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: WebView(
-          initialUrl: widget.blogUrl,
-          onWebViewCreated: ((WebViewController webViewController) {
-            _completer.complete(webViewController);
-          }),
-        ),
+        child: WebViewWidget(controller: _controller),
       ),
     );
   }
