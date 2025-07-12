@@ -5,6 +5,7 @@ import 'package:dyslexiaa/provider/authprovider.dart';
 import 'package:dyslexiaa/provider/locator.dart';
 import 'package:dyslexiaa/provider/storageRepo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 
 class UserController {
@@ -35,9 +36,17 @@ class UserController {
     return await _storage.getUserProfileImage(currentUser!.id);
   }
 
-  Future signIn(String email, String password) async {
+  Future<bool> signIn(String email, String password, BuildContext context) async {
     _currentUser = await authh.signIn(email, password);
-    _currentUser!.photoURL = await getDownload();
+    if (_currentUser != null) {
+      _currentUser!.photoURL = await getDownload();
+      return true;
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("User document does not exist in Firestore. Please contact support."))
+      );
+      return false;
+    }
   }
    
   UpdateFormData(String displayName) {

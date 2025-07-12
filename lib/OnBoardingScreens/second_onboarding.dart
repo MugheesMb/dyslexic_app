@@ -2,11 +2,11 @@
 
 import 'package:dyslexiaa/third_onboarding.dart';
 import 'package:flutter/material.dart';
-import 'Widgets/onboard.dart';
+import '../Widgets/onboard.dart';
 
 class SecondOnboardingScreen extends StatelessWidget {
   static const routeName = "/second-onboarding-screen";
-  const SecondOnboardingScreen({Key? key}) : super(key: key);
+  const SecondOnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,13 @@ class SecondOnboardingScreen extends StatelessWidget {
         description:
             "There is no shame that you are dyslexic, here is the chance to build bigger and better than before.",
         btText: "Next",
-        buttonNav: ThirdOnboardingScreen.routeName,
+        buttonNav: '',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ThirdOnboardingScreen()),
+          );
+        },
       ),
     );
   }

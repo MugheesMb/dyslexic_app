@@ -32,6 +32,9 @@ class authProvider {
         .collection('user')
         .doc(user2!.uid)
         .get();
+    if (!userData.exists || userData.data() == null) {
+      return null;
+    }
     return authProvider.fromMap(userData.data() as Map<String, dynamic>);
   }
 

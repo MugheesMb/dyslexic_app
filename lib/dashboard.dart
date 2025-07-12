@@ -66,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 245, 245, 1),
-      bottomNavigationBar: BottomAppBar(child: BottomNavBarV2(5), elevation: 0),
+      bottomNavigationBar: BottomAppBar(elevation: 0, child: BottomNavBarV2(5)),
       drawer: Drawer(
         backgroundColor: Color.fromARGB(255, 48, 107, 155),
         child: ListView(
@@ -213,7 +213,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(5, size.width / 2.5, 0, 0),
                   child: Text(
-                    user!.displayName,
+                    "User",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
@@ -223,361 +223,365 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 )
               ]),
-              Container(
+              Container(/**/
                 height:
                     size.height > 550 ? size.height - 320 : size.height - 290,
-                child: SingleChildScrollView(
-                  child: Container(
-                    //height: size.height,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: Center(
-                            child: Container(
-                              height: size.height > 500
-                                  ? size.height / 6
-                                  : size.height / 5,
-                              width: size.width,
-                              child: Card(
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                color: Color.fromRGBO(164, 25, 118, 1),
-                                borderOnForeground: true,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    Column(
-                                      children: [
-                                        Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Column(
-                                                children: [
-                                                  Text("Learn New Stuff",
-                                                      style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255),
-                                                          fontSize: 18,
-                                                          fontFamily: "Lexend",
-                                                          fontWeight:
-                                                              FontWeight.bold)),
-                                                  Builder(builder: (context) {
-                                                    return ElevatedButton(
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                                backgroundColor: Color
-                                                                    .fromRGBO(
-                                                                        110,
-                                                                        202,
-                                                                        243,
-                                                                        1)),
-                                                        onPressed: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          ActivityScreen()));
-                                                        },
-                                                        child: Text(
-                                                          "Activities",
-                                                          style: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    0,
-                                                                    0),
-                                                            fontSize: 15,
-                                                            fontFamily:
-                                                                "Lexend",
-                                                          ),
-                                                        ));
-                                                  })
-                                                ],
-                                              ),
-                                              Container(
-                                                  height: size.height / 9,
-                                                  // width: 120,
-                                                  child: Image.asset(
-                                                      "pic/Addition image.png")),
-                                            ]),
-                                      ],
-                                    )
-                                  ],
+                child: Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      //height: size.height,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Center(
+                              child: Container(
+                                height: size.height > 500
+                                    ? size.height / 6
+                                    : size.height / 5,
+                                width: size.width,
+                                child: Card(
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(35),
+                                  ),
+                                  color: Color.fromRGBO(164, 25, 118, 1),
+                                  borderOnForeground: true,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Column(
+                                        children: [
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    Text("Learn New Stuff",
+                                                        style: TextStyle(
+                                                            color: Color.fromARGB(
+                                                                255,
+                                                                255,
+                                                                255,
+                                                                255),
+                                                            fontSize: 18,
+                                                            fontFamily: "Lexend",
+                                                            fontWeight:
+                                                                FontWeight.bold)),
+                                                    Builder(builder: (context) {
+                                                      return ElevatedButton(
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                                  backgroundColor:
+                                                                      Color
+                                                                          .fromRGBO(
+                                                                              110,
+                                                                              202,
+                                                                              243,
+                                                                              1)),
+                                                          onPressed: () {
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            ActivityScreen()));
+                                                          },
+                                                          child: Text(
+                                                            "Activities",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      0,
+                                                                      0,
+                                                                      0),
+                                                              fontSize: 15,
+                                                              fontFamily:
+                                                                  "Lexend",
+                                                            ),
+                                                          ));
+                                                    })
+                                                  ],
+                                                ),
+                                                Container(
+                                                    height: size.height / 9,
+                                                    // width: 120,
+                                                    child: Image.asset(
+                                                        "pic/Addition image.png")),
+                                              ]),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Center(
-                            child: Card(
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(35),
-                          ),
-                          color: Color.fromRGBO(23, 111, 146, 1),
-                          borderOnForeground: true,
-                          child: Container(
-                              height: size.height > 550
-                                  ? size.height / 4
-                                  : size.height / 3,
-                              width: size.width,
-                              child: Column(children: [
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                                  child: Text("Progress till now",
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontSize: 20,
-                                        fontFamily: "Lexend",
-                                      )),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    IconButton(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 45.0),
-                                        onPressed: () {
-                                           Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ActivityProgressDetail()));
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_back_rounded,
-                                          color: Colors.white,
+                          Center(
+                              child: Card(
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35),
+                            ),
+                            color: Color.fromRGBO(23, 111, 146, 1),
+                            borderOnForeground: true,
+                            child: Container(
+                                height: size.height > 550
+                                    ? size.height / 4
+                                    : size.height / 3,
+                                width: size.width,
+                                child: Column(children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                                    child: Text("Progress till now",
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 255, 255, 255),
+                                          fontSize: 20,
+                                          fontFamily: "Lexend",
                                         )),
-                                    Column(
-                                      children: [
-                                        FutureBuilder(
-                                          future: cloudProgress(),
-                                          builder: (context, snapshot) {
-                                            return AvatarGlow(
-                                              glowColor: Colors.cyanAccent,
-                                              // endRadius: 60.0,
-                                              child: CircularPercentIndicator(
-                                                animationDuration: 1500,
-                                                radius: size.height > 550
-                                                    ? 60.0
-                                                    : 30,
-                                                lineWidth: size.height > 550
-                                                    ? 10.0
-                                                    : 5,
-                                                animation: true,
-                                                percent: snapshot.hasData
-                                                    ? snapshot.data as double
-                                                    : 0.0,
-                                                progressColor: Color.fromARGB(
-                                                    255, 14, 255, 223),
-                                                center: Text(
-                                                  ((snapshot.hasData
-                                                                  ? snapshot
-                                                                          .data
-                                                                      as double
-                                                                  : 0.0) *
-                                                              100)
-                                                          .round()
-                                                          .toString() +
-                                                      "%",
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20.0,
-                                                    fontFamily: "Lexend",
-                                                    color: Color.fromARGB(
-                                                        255, 255, 255, 255),
-                                                  ),
-                                                ),
-                                              ),
-                                            );
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      IconButton(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 45.0),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ActivityProgressDetail()));
                                           },
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10),
-                                          child: Text("Activity Progress",
-                                              style: TextStyle(
-                                                fontFamily: "Lexend",
-                                                color: Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                              )),
-                                        )
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        FutureBuilder(
-                                          future: cloudProgress2(),
-                                          builder: (context, snapshot) {
-                                            return AvatarGlow(
-                                              glowColor: Colors.cyanAccent,
-                                              // endRadius: 60.0,
-                                              child: CircularPercentIndicator(
-                                                animationDuration: 1500,
-                                                radius: size.height > 550
-                                                    ? 60.0
-                                                    : 30,
-                                                lineWidth: size.height > 550
-                                                    ? 10.0
-                                                    : 5,
-                                                animation: true,
-                                                percent: snapshot.hasData
-                                                    ? snapshot.data as double
-                                                    : 0.0,
-                                                progressColor: Color.fromRGBO(
-                                                    14, 255, 223, 1),
-                                                center: Text(
-                                                  ((snapshot.hasData
-                                                                  ? snapshot
-                                                                          .data
-                                                                      as double
-                                                                  : 0.0) *
-                                                              100)
-                                                          .round()
-                                                          .toString() +
-                                                      "%",
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                          icon: Icon(
+                                            Icons.arrow_back_rounded,
+                                            color: Colors.white,
+                                          )),
+                                      Column(
+                                        children: [
+                                          FutureBuilder(
+                                            future: cloudProgress(),
+                                            builder: (context, snapshot) {
+                                              return AvatarGlow(
+                                                glowColor: Colors.cyanAccent,
+                                                // endRadius: 60.0,
+                                                child: CircularPercentIndicator(
+                                                  animationDuration: 1500,
+                                                  radius: size.height > 550
+                                                      ? 60.0
+                                                      : 30,
+                                                  lineWidth: size.height > 550
+                                                      ? 10.0
+                                                      : 5,
+                                                  animation: true,
+                                                  percent: snapshot.hasData
+                                                      ? snapshot.data as double
+                                                      : 0.0,
+                                                  progressColor: Color.fromARGB(
+                                                      255, 14, 255, 223),
+                                                  center: Text(
+                                                    ((snapshot.hasData
+                                                                    ? snapshot
+                                                                            .data
+                                                                        as double
+                                                                    : 0.0) *
+                                                                100)
+                                                            .round()
+                                                            .toString() +
+                                                        "%",
+                                                    style: const TextStyle(
+                                                      fontWeight: FontWeight.bold,
                                                       fontSize: 20.0,
                                                       fontFamily: "Lexend",
                                                       color: Color.fromARGB(
-                                                          255, 255, 255, 255)),
+                                                          255, 255, 255, 255),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10),
-                                          child: Text("Games Progress",
-                                              style: TextStyle(
+                                              );
+                                            },
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Text("Activity Progress",
+                                                style: TextStyle(
                                                   fontFamily: "Lexend",
                                                   color: Color.fromARGB(
-                                                      255, 255, 255, 255))),
-                                        )
-                                      ],
-                                    ),
-                                    IconButton(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 45.0),
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      GameProgressDetail()));
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward_rounded,
-                                          color: Colors.white,
-                                        )),
-                                  ],
-                                ),
-                              ])),
-                        )),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: Center(
-                            child: Container(
-                              height: size.height > 550
-                                  ? size.height / 6
-                                  : size.height / 5,
-                              width: size.width,
-                              child: Card(
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(35),
-                                ),
-                                color: Color.fromARGB(255, 158, 106, 39),
-                                borderOnForeground: true,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    Column(
-                                      children: [
-                                        Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Container(
-                                                  height: size.height / 10,
-                                                  //width: 1,
-                                                  child: Image.asset(
-                                                      "pic/rabbit.png")),
-                                              Column(
-                                                children: [
-                                                  Text("Play new Games",
-                                                      style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255),
-                                                          fontFamily: "Lexend",
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.bold)),
-                                                  Builder(builder: (context) {
-                                                    return ElevatedButton(
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                                backgroundColor: Color
-                                                                    .fromRGBO(
-                                                                        110,
-                                                                        202,
-                                                                        243,
-                                                                        1)),
-                                                        onPressed: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          GamesDisplay()));
-                                                        },
-                                                        child: Text(
-                                                          "Games",
-                                                          style: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    0,
-                                                                    0),
-                                                            fontFamily:
-                                                                "Lexend",
-                                                            fontSize: 15,
-                                                          ),
-                                                        ));
-                                                  })
-                                                ],
-                                              ),
-                                            ]),
-                                      ],
-                                    )
-                                  ],
+                                                      255, 255, 255, 255),
+                                                )),
+                                          )
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          FutureBuilder(
+                                            future: cloudProgress2(),
+                                            builder: (context, snapshot) {
+                                              return AvatarGlow(
+                                                glowColor: Colors.cyanAccent,
+                                                // endRadius: 60.0,
+                                                child: CircularPercentIndicator(
+                                                  animationDuration: 1500,
+                                                  radius: size.height > 550
+                                                      ? 60.0
+                                                      : 30,
+                                                  lineWidth: size.height > 550
+                                                      ? 10.0
+                                                      : 5,
+                                                  animation: true,
+                                                  percent: snapshot.hasData
+                                                      ? snapshot.data as double
+                                                      : 0.0,
+                                                  progressColor: Color.fromRGBO(
+                                                      14, 255, 223, 1),
+                                                  center: Text(
+                                                    ((snapshot.hasData
+                                                                    ? snapshot
+                                                                            .data
+                                                                        as double
+                                                                    : 0.0) *
+                                                                100)
+                                                            .round()
+                                                            .toString() +
+                                                        "%",
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20.0,
+                                                        fontFamily: "Lexend",
+                                                        color: Color.fromARGB(
+                                                            255, 255, 255, 255)),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Text("Games Progress",
+                                                style: TextStyle(
+                                                    fontFamily: "Lexend",
+                                                    color: Color.fromARGB(
+                                                        255, 255, 255, 255))),
+                                          )
+                                        ],
+                                      ),
+                                      IconButton(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 45.0),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        GameProgressDetail()));
+                                          },
+                                          icon: Icon(
+                                            Icons.arrow_forward_rounded,
+                                            color: Colors.white,
+                                          )),
+                                    ],
+                                  ),
+                                ])),
+                          )),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Center(
+                              child: Container(
+                                height: size.height > 550
+                                    ? size.height / 6
+                                    : size.height / 5,
+                                width: size.width,
+                                child: Card(
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(35),
+                                  ),
+                                  color: Color.fromARGB(255, 158, 106, 39),
+                                  borderOnForeground: true,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Column(
+                                        children: [
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Container(
+                                                    height: size.height / 10,
+                                                    //width: 1,
+                                                    child: Image.asset(
+                                                        "pic/rabbit.png")),
+                                                Column(
+                                                  children: [
+                                                    Text("Play new Games",
+                                                        style: TextStyle(
+                                                            color: Color.fromARGB(
+                                                                255,
+                                                                255,
+                                                                255,
+                                                                255),
+                                                            fontFamily: "Lexend",
+                                                            fontSize: 18,
+                                                            fontWeight:
+                                                                FontWeight.bold)),
+                                                    Builder(builder: (context) {
+                                                      return ElevatedButton(
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                                  backgroundColor:
+                                                                      Color
+                                                                          .fromRGBO(
+                                                                              110,
+                                                                              202,
+                                                                              243,
+                                                                              1)),
+                                                          onPressed: () {
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            GamesDisplay()));
+                                                          },
+                                                          child: Text(
+                                                            "Games",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      0,
+                                                                      0,
+                                                                      0),
+                                                              fontFamily:
+                                                                  "Lexend",
+                                                              fontSize: 15,
+                                                            ),
+                                                          ));
+                                                    })
+                                                  ],
+                                                ),
+                                              ]),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -609,7 +613,4 @@ Future<void> logout(BuildContext context) async {
 
   Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => SignupLoginScreen()));
-       
-
- 
 }

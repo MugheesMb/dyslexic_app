@@ -10,6 +10,7 @@ class OnBoardWidget extends StatelessWidget {
   final String description; //text under heading of onboarding screen
   final String btText; //button text of each onboarding screen
   final String buttonNav;
+  final VoidCallback? onPressed; // Add callback for button press
 
   const OnBoardWidget(
       {required this.bgImage,
@@ -18,6 +19,7 @@ class OnBoardWidget extends StatelessWidget {
       required this.description,
       required this.btText,
       required this.buttonNav,
+      this.onPressed, // Make it optional for backward compatibility
       Key? key})
       : super(key: key);
   @override
@@ -75,7 +77,7 @@ class OnBoardWidget extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: onPressed ?? () {
               Navigator.of(context).pushNamed(buttonNav);
             },
             child: Text(btText),

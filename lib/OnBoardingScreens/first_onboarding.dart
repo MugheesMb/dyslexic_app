@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:dyslexiaa/second_onboarding.dart';
+import 'package:dyslexiaa/OnBoardingScreens/second_onboarding.dart';
 import 'package:flutter/material.dart';
-import 'Widgets/onboard.dart';
+import '../Widgets/onboard.dart';
 
 class FirstOnboardScreen extends StatelessWidget {
   static const routeName = "/first-onboarding-screen";
-  const FirstOnboardScreen({Key? key}) : super(key: key);
+  const FirstOnboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,13 @@ class FirstOnboardScreen extends StatelessWidget {
         description:
             "If your kids have dyslexiaa then no worries because dyslexic patients are more creative and more intelligent.",
         btText: "Next",
-        buttonNav: SecondOnboardingScreen.routeName,
+        buttonNav: '',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SecondOnboardingScreen()),
+          );
+        },
       ),
     );
   }

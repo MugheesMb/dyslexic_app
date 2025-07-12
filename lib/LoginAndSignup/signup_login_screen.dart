@@ -5,11 +5,9 @@ import 'package:dyslexiaa/LoginAndSignup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'login.dart';
-
 class SignupLoginScreen extends StatelessWidget {
   static const routeName = "/signup-login";
-  const SignupLoginScreen({Key? key}) : super(key: key);
+  const SignupLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,6 @@ class SignupLoginScreen extends StatelessWidget {
    )
  );
                 },
-                child: Text("Log In"),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(108, 202, 244, 1),
                     side: BorderSide(
@@ -66,6 +63,7 @@ class SignupLoginScreen extends StatelessWidget {
                         size.height > 700 ? 20 : 10,
                         size.height > 700 ? 115 : 80,
                         size.height > 700 ? 20 : 10)),
+                child: Text("Log In",style: TextStyle(color: Colors.black),),
               )),
           Container(
               padding:
@@ -77,10 +75,6 @@ class SignupLoginScreen extends StatelessWidget {
    )
  );
                 },
-                child: Text(
-                  "Create an Account",
-                  style: TextStyle(color: Colors.black),
-                ),
                 style: ElevatedButton.styleFrom(
                     side: BorderSide(width: 3, color: Colors.black),
                     shape: RoundedRectangleBorder(
@@ -91,6 +85,10 @@ class SignupLoginScreen extends StatelessWidget {
                         size.height > 700 ? 20 : 10,
                         size.height > 700 ? 75 : 40,
                         size.height > 700 ? 20 : 10)),
+                child: Text(
+                  "Create an Account",
+                  style: TextStyle(color: Colors.black),
+                ),
               ))
         ],
       ),

@@ -130,170 +130,173 @@ class _QuizHomeState extends State<QuizMain> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromRGBO(31, 40, 71, 1),
-        body: Column(children: [
-          Padding(
-              padding: EdgeInsets.fromLTRB(
-                  0, size.height > 700 ? size.height / 10 : 5, 0, 0),
-              child: Text("Dyslexia Diagnosis",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: size.height > 700 ? 25 : 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Lexend"))),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, size.height / 20, 0, 0),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Card(
-                        color: Color.fromRGBO(31, 40, 71, 1),
-                        child: Center(
-                            child: j1 == false
-                                ? Text(
-                                    "1",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: size.height > 700 ? 20 : 15),
-                                  )
-                                : Icon(Icons.check,
-                                    color: Colors.white,
-                                    size: size.height > 700 ? 20 : 15)),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(35),
-                        )),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Card(
-                        color: Color.fromRGBO(31, 40, 71, 1),
-                        child: Center(
-                            child: j2 == false
-                                ? Text(
-                                    "2",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: size.height > 700 ? 20 : 15),
-                                  )
-                                : Icon(Icons.check,
-                                    color: Colors.white,
-                                    size: size.height > 700 ? 20 : 15)),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(35),
-                        )),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Card(
-                        color: Color.fromRGBO(31, 40, 71, 1),
-                        child: Center(
-                            child: j3 == false
-                                ? Text(
-                                    "3",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: size.height > 700 ? 20 : 15),
-                                  )
-                                : Icon(Icons.check,
-                                    color: Colors.white,
-                                    size: size.height > 700 ? 20 : 15)),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(35),
-                        )),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Card(
-                        color: Color.fromRGBO(31, 40, 71, 1),
-                        child: Center(
-                            child: j4 == false
-                                ? Text(
-                                    "4",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: size.height > 500 ? 20 : 15),
-                                  )
-                                : Icon(
-                                    Icons.check,
-                                    color: Colors.white,
-                                    size: size.height > 500 ? 20 : 15,
-                                  )),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(35),
-                        )),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Card(
-                        color: Color.fromRGBO(31, 40, 71, 1),
-                        child: Center(
-                            child: j5 == false
-                                ? Text(
-                                    "5",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: size.height > 500 ? 20 : 15),
-                                  )
-                                : Icon(
-                                    Icons.check,
-                                    color: Colors.white,
-                                    size: size.height > 700 ? 20 : 15,
-                                  )),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(35),
-                        )),
-                  )
-                ]),
-          ),
-          _questionIndex < _questions.length
-              ? Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+        body: SingleChildScrollView(
+          child: Column(
+              children: [
+            Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, size.height > 700 ? size.height / 10 : 5, 0, 0),
+                child: Text("Dyslexia Diagnosis",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: size.height > 700 ? 25 : 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Lexend"))),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, size.height / 20, 0, 0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      height: 50,
+                      width: 50,
                       child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                          child: Column(
-                            children: [
-                              quiz(
-                                answerQuestion: _answerQuestion,
-                                questionIndex: _questionIndex,
-                                questions: _questions,
-                              ),
-                            ],
+                          color: Color.fromRGBO(31, 40, 71, 1),
+                          child: Center(
+                              child: j1 == false
+                                  ? Text(
+                                      "1",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: size.height > 700 ? 20 : 15),
+                                    )
+                                  : Icon(Icons.check,
+                                      color: Colors.white,
+                                      size: size.height > 700 ? 20 : 15)),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(35),
+                          )),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: Card(
+                          color: Color.fromRGBO(31, 40, 71, 1),
+                          child: Center(
+                              child: j2 == false
+                                  ? Text(
+                                      "2",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: size.height > 700 ? 20 : 15),
+                                    )
+                                  : Icon(Icons.check,
+                                      color: Colors.white,
+                                      size: size.height > 700 ? 20 : 15)),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(35),
+                          )),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: Card(
+                          color: Color.fromRGBO(31, 40, 71, 1),
+                          child: Center(
+                              child: j3 == false
+                                  ? Text(
+                                      "3",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: size.height > 700 ? 20 : 15),
+                                    )
+                                  : Icon(Icons.check,
+                                      color: Colors.white,
+                                      size: size.height > 700 ? 20 : 15)),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(35),
+                          )),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: Card(
+                          color: Color.fromRGBO(31, 40, 71, 1),
+                          child: Center(
+                              child: j4 == false
+                                  ? Text(
+                                      "4",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: size.height > 500 ? 20 : 15),
+                                    )
+                                  : Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                      size: size.height > 500 ? 20 : 15,
+                                    )),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(35),
+                          )),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: Card(
+                          color: Color.fromRGBO(31, 40, 71, 1),
+                          child: Center(
+                              child: j5 == false
+                                  ? Text(
+                                      "5",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: size.height > 500 ? 20 : 15),
+                                    )
+                                  : Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                      size: size.height > 700 ? 20 : 15,
+                                    )),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(35),
+                          )),
+                    )
+                  ]),
+            ),
+            _questionIndex < _questions.length
+                ? Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35)),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                            child: Column(
+                              children: [
+                                quiz(
+                                  answerQuestion: _answerQuestion,
+                                  questionIndex: _questionIndex,
+                                  questions: _questions,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(size.width / 10,
-                          size.height / 50, size.width / 10, 0),
-                      child: Text(
-                          "Select the most suitable answer according to your child's bahvior  and over all performance",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: size.height > 700 ? 20 : 15,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontFamily: "Lexend")),
-                    ),
-                  ],
-                )
-              : Result(_totalScore, _resetQuiz),
-        ]),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(size.width / 10,
+                            size.height / 50, size.width / 10, 0),
+                        child: Text(
+                            "Select the most suitable answer according to your child's bahvior  and over all performance",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: size.height > 700 ? 20 : 15,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontFamily: "Lexend")),
+                      ),
+                    ],
+                  )
+                : Result(_totalScore, _resetQuiz),
+          ]),
+        ),
       ),
     );
   }

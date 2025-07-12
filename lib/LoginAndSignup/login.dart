@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
 final FirebaseAuth auth = FirebaseAuth.instance;
 
 class Login extends StatefulWidget {
   static const routeName = "/login";
+
+  const Login({super.key});
   @override
   State<Login> createState() => _LoginState();
 }
@@ -27,7 +28,6 @@ class _LoginState extends State<Login> {
   bool _obscureText =
       true; // declare this variable for hiding the password with icon
   Future<void> _submit2() async {
-    
     if (!_formKey.currentState!.validate()) {
       // Invalid!
       return;
@@ -37,41 +37,42 @@ class _LoginState extends State<Login> {
       _isLoading = true;
     });
     try {
-      await locator.get<UserController>().signIn(
+      bool success = await locator.get<UserController>().signIn(
             _authData2['email'].toString(),
             _authData2['password'].toString(),
+            context,
           );
       setState(() {
         _isLoading = false;
       });
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DashboardScreen()),
-      );
+      if (success) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DashboardScreen()),
+        );
+      }
     } on FirebaseAuthException catch (e) {
-       setState(() {
+      setState(() {
         _isLoading = false;
       });
       if (e.code == 'user-not-found') {
-        Fluttertoast.showToast(msg: 'No user found for that email.',
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0
-        
-        );
+        Fluttertoast.showToast(
+            msg: 'No user found for that email.',
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0);
       } else if (e.code == 'wrong-password') {
-        Fluttertoast.showToast(msg: 'Wrong password provided for that user.',
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0
-        
-        );
+        Fluttertoast.showToast(
+            msg: 'Wrong password provided for that user.',
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0);
       } else {
         return print(e.message);
       }
@@ -136,35 +137,34 @@ class _LoginState extends State<Login> {
                       height: 20,
                     ),
                     TextFormField(
-                      obscureText: _obscureText,
+                      obscureText: _obscureText, // true means password is hidden
                       decoration: InputDecoration(
                           suffixIcon: IconButton(
-                            //here weuse setstate for changing the visibility of password
                             onPressed: () {
                               setState(() {
                                 _obscureText = !_obscureText;
-                                validator:
-                                (value) {
-                                  if (value.isEmpty) {
-                                    return "* Required";
-                                  } else if (value.length < 6) {
-                                    return "Password should be atleast 6 characters";
-                                  } else if (value.length > 15) {
-                                    return "Password should not be greater than 15 characters";
-                                  } else {
-                                    return null;
-                                  }
-                                };
                               });
                             },
                             icon: Icon(_obscureText
-                                ? Icons.visibility
-                                : Icons.visibility_off),
+                                ? Icons.visibility_off // closed eye means hidden
+                                : Icons.visibility // open eye means visible
+                            ),
                           ),
                           hintText: 'Enter Password',
                           label: const Text("Password"),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30))),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "* Required";
+                        } else if (value.length < 6) {
+                          return "Password should be at least 6 characters";
+                        } else if (value.length > 15) {
+                          return "Password should not be greater than 15 characters";
+                        } else {
+                          return null;
+                        }
+                      },
                       onSaved: (value) {
                         _authData2['password'] = value!;
                       },
@@ -178,7 +178,6 @@ class _LoginState extends State<Login> {
               else
                 ElevatedButton(
                   onPressed: _submit2,
-                  child: const Text("Log In"),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(108, 202, 244, 1),
                       side: const BorderSide(
@@ -188,6 +187,7 @@ class _LoginState extends State<Login> {
                           //to set border radius to button
                           borderRadius: BorderRadius.circular(30)),
                       padding: const EdgeInsets.fromLTRB(115, 20, 115, 20)),
+                  child: const Text("Log In",style: TextStyle(color: Colors.black),),
                 ),
 
               //PrimaryButton(buttonText: 'login'),

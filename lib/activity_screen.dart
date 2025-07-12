@@ -28,8 +28,8 @@ class ActivityScreen extends StatelessWidget {
         backgroundColor: Color.fromRGBO(110, 202, 243, 1),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: BottomNavBarV2(0),
         elevation: 0,
+        child: BottomNavBarV2(0),
       ),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

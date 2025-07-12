@@ -167,8 +167,9 @@ class _SignupState extends State<Signup> {
                               });
                             },
                             icon: Icon(_obscureText
-                                ? Icons.visibility
-                                : Icons.visibility_off),
+                                ? Icons.visibility_off // closed eye means hidden
+                                : Icons.visibility // open eye means visible
+                            ),
                           ),
                           prefixIcon: Icon(Icons.password),
                           label: Text("Password"),
@@ -190,20 +191,22 @@ class _SignupState extends State<Signup> {
                       TextFormField(
                         obscureText: _obscureText,
                         decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
-                              },
-                              icon: Icon(_obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            icon: Icon(_obscureText
+                                ? Icons.visibility_off // closed eye means hidden
+                                : Icons.visibility // open eye means visible
                             ),
-                            prefixIcon: Icon(Icons.password),
-                            label: Text("Confirm Password"),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30))),
+                          ),
+                          prefixIcon: Icon(Icons.password),
+                          label: Text("Confirm Password"),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                        ),
                         validator: (value) {
                           if (value != _passwordController.text) {
                             return 'Passwords do not match!';

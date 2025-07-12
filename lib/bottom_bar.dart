@@ -1,4 +1,3 @@
-
 import 'package:dyslexiaa/GamesDisplay.dart';
 import 'package:dyslexiaa/LoginAndSignup/usermodel.dart';
 import 'package:dyslexiaa/activity_screen.dart';
@@ -15,14 +14,7 @@ class BottomNavBarV2 extends StatelessWidget {
   static const routeName = "/bottom-bar";
   int currentIndex;
 
-  BottomNavBarV2(this.currentIndex);
-  // int currentIndex = currrentIndex;
-
-  // setBottomBarIndex(index) {
-  //   setState(() {
-  //     currentIndex = index;
-  //   });
-  // }
+  BottomNavBarV2(this.currentIndex, {super.key});
 
 UserModel? user = locator.get<UserController>().currentUser;
   @override
@@ -68,8 +60,11 @@ UserModel? user = locator.get<UserController>().currentUser;
                     height: 80,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.end, // Added to align children to bottom
                       children: [
                         Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end, // Added to push content to bottom
                           children: [
                             IconButton(
                               icon: Icon(
@@ -92,6 +87,8 @@ UserModel? user = locator.get<UserController>().currentUser;
                           ],
                         ),
                         Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
                                 icon: Icon(
@@ -108,8 +105,6 @@ UserModel? user = locator.get<UserController>().currentUser;
                                     (Route<dynamic> route) => false,
                                   );
                                   currentIndex == 1;
-                                  //   Navigator.of(context)
-                                  //       .pushNamed(GamesDisplay.routeName);
                                 }
                                 ),
                             const Text("Games")
@@ -119,6 +114,8 @@ UserModel? user = locator.get<UserController>().currentUser;
                           width: size.width * 0.20,
                         ),
                         Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
                                 icon: Icon(
@@ -140,6 +137,8 @@ UserModel? user = locator.get<UserController>().currentUser;
                           ],
                         ),
                         Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
                                 icon: Icon(
@@ -153,7 +152,6 @@ UserModel? user = locator.get<UserController>().currentUser;
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Profile_User(user)),
-                                    //(Route<dynamic> route) => false,
                                   );
                                   currentIndex == 3;
                                 }),

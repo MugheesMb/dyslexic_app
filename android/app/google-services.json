@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "847794581936-jjtkg6dtttfdddkj3j7grid989u4pbqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.dyslexic_app",
+            "certificate_hash": "d8d768a849b041847085747a6d594ef1ca5e344f"
+          }
+        },
+        {
           "client_id": "847794581936-d8oik5112c2i5097trave03e2kmbcco4.apps.googleusercontent.com",
           "client_type": 3
         }
